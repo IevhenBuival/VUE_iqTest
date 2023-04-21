@@ -15,11 +15,11 @@
 export default {
   props: {
     tests_count: {
-      type: Object,
+      type: Number,
       required: true,
     },
     current: {
-      type: Object,
+      type: Number,
       required: true,
     },
   },

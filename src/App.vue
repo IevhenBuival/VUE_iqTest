@@ -15,7 +15,6 @@
       class="MAIN_DIV"
       v-bind:menu_list="menu"
       v-bind:test_data="test"
-      v-on:setTestAnswer="changeTestData"
       v-on:setMenuData="changeMenuData"
       v-bind:state="true"
       v-bind:showbrain="pages.showbrain"
@@ -32,6 +31,8 @@
       v-bind:test_data="test"
       v-bind:showbrain="pages.showbrain"
       v-on:setMenuData="changeMenuData"
+      v-on:setTestDate="changeTestData"
+      v-on:setTestNumber="changeCurrentTest"
     />
   </div>
 </template>
@@ -69,7 +70,7 @@ const page_manager = {
   ],
 };
 let tests_data = {
-  current: 1,
+  current: 0,
   tests: [
     {
       number: 0,
@@ -84,12 +85,33 @@ let tests_data = {
     {
       number: 1,
       view: 1,
-      title: "test 2",
+      title: "Вам привычнее и важнее:",
       picture: "",
       data: [
-        { id: 0, text: "te st1", checked: false },
-        { id: 1, text: "te st2", checked: false },
-        { id: 1, text: "te st3", checked: false },
+        {
+          id: 0,
+          text: "Наслаждаться каждой минутой проведенного времени",
+          checked: false,
+        },
+        { id: 1, text: "Быть устремленными мыслями в будущее", checked: false },
+        {
+          id: 1,
+          text: "Учитывать в ежедневной практике прошлый опыт",
+          checked: false,
+        },
+      ],
+    },
+    {
+      number: 2,
+      view: 4,
+      title: "Обработка результатов",
+      picture: "",
+      data: [
+        {
+          id: 0,
+          text: "Определение стиля мышления............... ...................................................",
+          checked: false,
+        },
       ],
     },
   ],
@@ -125,14 +147,13 @@ export default {
   },
   methods: {
     changeTestData(number, id) {
-      /*  const initstate = this.test[number].data[id].checked;
-
-      for (let i = 0; i < this.test[number].data.length; i++) {
-        this.test[number].data[i].checked = false;
-      }
-
-      this.test[number].data[id].checked = !initstate;*/
-      ValueSelector(this.test[number].data, id, "checked");
+      ValueSelector(this.test.tests[number].data, id, "checked");
+    },
+    changeCurrentTest(number) {
+      const checked = this.test.tests[number].data.filter(
+        (el) => el.checked === true
+      );
+      if (checked.length === 1) this.test.current = this.test.current + 1;
     },
     changeMenuData(id) {
       ValueSelector(this.menu, id, "active");

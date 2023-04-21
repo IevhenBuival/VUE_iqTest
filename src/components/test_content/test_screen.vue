@@ -10,6 +10,8 @@
     <test_card
       v-bind:test_data="test_data.tests[test_data.current]"
       v-bind:tests_count="test_data.tests.length"
+      v-on:selectTestAnswer="setTestState"
+      v-on:nextTest="setNewNumber"
     />
   </div>
 </template>
@@ -29,6 +31,12 @@ export default {
     },
     modalMenuShow: function () {
       this.$emit("setMenuData", 3);
+    },
+    setTestState: function (number, id) {
+      this.$emit("setTestDate", number, id);
+    },
+    setNewNumber: function (number) {
+      this.$emit("setTestNumber", number);
     },
   },
 };

@@ -4,11 +4,21 @@
     :class="{ selected: variant.checked }"
     @:click="checkedClick(variant.id)"
   >
- </div>-->
-  <div class="container">
-    <div class="checkbottom">1</div>
+  <div class="checkbottom">1</div>
     <div class="title">
       <strong>{{ variant.text }}</strong>
+    </div>
+ </div>-->
+  <div class="container">
+    <div
+      class="bugfix"
+      :class="{ selected: variant.checked }"
+      @:click="checkedClick(variant.id)"
+    >
+      <div class="circle" :class="{ checked: variant.checked }"></div>
+      <div class="title" :class="{ selected: variant.checked }">
+        <p>{{ variant.text }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -27,53 +37,55 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: flexbox;
-  flex-direction: row;
+.bugfix {
+  display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: space-around;
-  background-color: aqua;
-  overflow: hidden;
+  /* Rectangle 4.4 */
+  align-items: center;
+
+  min-height: calc(var(--app-height, 100vh) * 40 / 568);
+  background: rgba(255, 255, 255, 0.15);
 }
+.container {
+  display: inline-block;
+  width: 100%;
+}
+
 .title {
   display: inline-block;
   flex: 1 1 auto;
   width: 50%;
-  background-color: red;
+  color: #fff;
+  text-align: left;
+
+  font-family: "PT Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-size: calc(var(--app-height, 100vh) * 18 / 568);
+  line-height: calc(var(--app-height, 100vh) * 19 / 568);
+  letter-spacing: 0.05em;
+
+  color: #ffffff;
 }
 
-.checkbottom {
+.circle {
   /* Ellipse */
 
-  display: inline-block;
-  box-sizing: border-box;
-
+  display: flex;
+  margin: calc(var(--app-height, 100vh) * 10 / 568);
+  justify-content: center;
+  align-items: center;
+  width: calc(var(--app-height, 100vh) * 19 / 568);
+  height: calc(var(--app-height, 100vh) * 19 / 568);
   border-radius: 50%;
-  font-weight: bold;
-
-  max-width: calc(var(--app-height, 100vh) * 20 / 568);
-  max-height: calc(var(--app-height, 100vh) * 20 / 568);
-  margin-left: calc(var(--app-width, 100vh) * 35 / 320);
-  background-color: red;
-  border: 3px solid #fff;
-
-  opacity: 1;
+  border: #f2f3f3 solid calc(var(--app-height, 100vh) * 2 / 568);
 }
 .selected {
-  background-color: blue;
+  background: #ffc700;
+  color: #272727;
 }
-.li {
-  border: 1px solid #ccc;
-  display: flex;
-  justify-content: space-between;
-
-  /* Rectangle 4 */
-
-  width: 100%;
-  min-height: calc(var(--app-height, 100vh) * 40 / 568);
-  z-index: 0;
-  background: #f2f3f3;
-  opacity: 0.15;
+.checked {
+  background: #2950c2;
+  border: calc(var(--app-height, 100vh) * 2 / 568) solid #272727;
 }
 </style>

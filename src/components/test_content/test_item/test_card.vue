@@ -1,56 +1,59 @@
 <template>
   <div class="container">
     <progress_bar v-bind:tests_count="tests_count" v-bind:current="1" />
-    <div>{{ test_data }}</div>
-    <div class="buttonWrapper">
-      <button_item v-bind:title="'далее'" v-bind:color="false" />
-    </div>
-  </div>
-  <!-- <div class="container">
-    <progress_bar
-      v-bind:tests_count="tests_count"
-      v-bind:current="test_data.number"
-    />
     <div class="test">
       <div class="title">
         <h1>
-          Какое определение, по-Вашему, больше подходит к этому геометрическому
-          изображению:
+          {{ test_data.title }}
         </h1>
+        <div v-if="false" class="img">
+          <img src="@/pics/test01.png" alt="" />
+        </div>
       </div>
-      <div class="img"><img src="@/pics/test01.png" alt="" /></div>
-       <div class="test_item">
+      <div v-if="test_data.view === 1" class="testItem">
         <test_item
           v-for="variant of test_data.data"
-          :key="variant.id"
+          :key="variant.id + 1000"
           v-bind:variant="variant"
           v-on:selectAnswer="selectTestAnswer"
         />
       </div>
     </div>
-    
+    <div v-if="test_data.view !== 4" class="buttonWrapper">
+      <button_item
+        v-bind:title="'далее'"
+        v-bind:color="next"
+        v-on:goTest="nextTestClick"
+      />
+    </div>
   </div>
---></template>
+</template>
 
 <script>
-//import test_item from "@/components/test_content/test_item/test_item";
+import test_item from "@/components/test_content/test_item/test_item";
 import progress_bar from "@/components/test_content/test_item/progress_bar";
 import button_item from "@/components/button_item/button_item";
 
 export default {
   props: ["test_data", "tests_count"],
   components: {
-    // test_item,
+    test_item,
     progress_bar,
     button_item,
   },
-  mounted() {
-    console.log(this.test_data);
+  computed: {
+    next() {
+      const active = this.test_data.data.filter((el) => el.checked);
+      return active.length === 0 ? false : true;
+    },
   },
+
   methods: {
     selectTestAnswer: function (id) {
-      console.log(this.test_data);
-      this.$emit("selectTestAnswer", 1, id);
+      this.$emit("selectTestAnswer", this.test_data.number, id);
+    },
+    nextTestClick: function () {
+      this.$emit("nextTest", this.test_data.number);
     },
   },
 };
@@ -62,7 +65,7 @@ export default {
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
-  margin: auto auto;
+  width: 100%;
 
   flex: 1 1 auto;
   height: 70%;
@@ -91,7 +94,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
   text-align: end;
   overflow: hidden;
   min-height: 20%;
@@ -99,11 +102,12 @@ h1 {
   flex: 2 1 auto;
 }
 
-.test_item {
+.testItem {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
+  width: 100%;
   gap: calc(var(--app-height, 100vh) * 10 / 568); /*19-*/
   overflow: hidden;
 
@@ -115,7 +119,7 @@ h1 {
   align-items: center;
   height: 10%;
   margin-bottom: calc(var(--app-height, 100vh) * 25 / 568);
-  margin-top: calc(var(--app-height, 100vh) * 25 / 568);
+  margin-top: calc(var(--app-height, 100vh) * 20 / 568);
 }
 
 .container {
@@ -123,7 +127,7 @@ h1 {
   flex-direction: column;
   min-height: 100%;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 0;
   flex-wrap: 1;
 }
 </style>
