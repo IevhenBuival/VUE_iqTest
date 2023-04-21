@@ -13,7 +13,16 @@
 
 <script>
 export default {
-  props: ["tests_count", "current"],
+  props: {
+    tests_count: {
+      type: Object,
+      required: true,
+    },
+    current: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>
 <style scoped>

@@ -7,7 +7,10 @@
       v-on:modalMenuShow="modalMenuShow"
     />
 
-    <test_card v-bind:card_data="test_data" />
+    <test_card
+      v-bind:test_data="test_data.tests[test_data.current]"
+      v-bind:tests_count="test_data.tests.length"
+    />
   </div>
 </template>
 
