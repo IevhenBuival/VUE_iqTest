@@ -57,23 +57,4 @@ export default {
   margin: auto;
   color: #ffc700;
 }
-.header1 {
-  display: flex;
-  /* тест на определение IQ */
-  font-family: "Yeseva One";
-  font-style: normal;
-  font-weight: 400;
-  font-size: calc(var(--app-height) * 12 / 568);
-  line-height: calc(var(--app-height) * 14 / 568);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin: 0 10%;
-  color: #ffc700;
-  max-width: 50%;
-  max-height: 147px;
-  width: calc(var(--app-height) * 192 / 568);
-  height: calc(var(--app-height) * 46 / 568);
-  text-justify: center;
-  text-align: center;
-}
 </style>

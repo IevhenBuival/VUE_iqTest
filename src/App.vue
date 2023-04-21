@@ -41,19 +41,21 @@ import main_screen from "@/components/main_screen/main_screen";
 import modal_menu from "@/components/header_menu/menu_item/modal_menu";
 import test_screen from "@/components/test_content/test_screen";
 
-const appHeight = () => {
+const appHeightWidth = () => {
   const doc = document.documentElement;
   doc.style.setProperty("--app-height", `${window.innerHeight}px`);
   doc.style.setProperty("--app-width", `${window.innerWidth}px`);
 };
-window.addEventListener("resize", appHeight);
-appHeight();
+/*window.addEventListener("resize", appHeightWidth);*/
+/*ScreenOrientation.onchange = appHeightWidth;
+appHeightWidth();*/
 
 const main_menu = [
   { id: 0, title: "Главная", page: 0, active: true, visible: true },
   { id: 1, title: "Информация о тесте", page: 1, active: false, visible: true },
   { id: 2, title: "Пройти тест", page: 2, active: false, visible: true },
   { id: 3, title: "modal menu", page: 3, active: false, visible: false },
+  { id: 4, title: "finish", page: 4, active: false, visible: false },
 ];
 const page_manager = {
   lastpage: 0,
@@ -63,19 +65,35 @@ const page_manager = {
     { id: 1, name: "full", menuid: 1, active: false },
     { id: 2, name: "test", menuid: 2, active: false },
     { id: 3, name: "modal", menuid: 3, active: false },
+    { id: 4, name: "finish", menuid: 4, active: false },
   ],
 };
-let tests_data = [
-  {
-    number: 0,
-    view: 1,
-    data: [
-      { id: 0, text: "test1", checked: false },
-      { id: 1, text: "test2", checked: true },
-      { id: 2, text: "test3", checked: false },
-    ],
-  },
-];
+let tests_data = {
+  current: 1,
+  tests: [
+    {
+      number: 0,
+      view: 1,
+      title: "test 1",
+      picture: "",
+      data: [
+        { id: 0, text: "test1", checked: false },
+        { id: 1, text: "test2", checked: false },
+      ],
+    },
+    {
+      number: 1,
+      view: 1,
+      title: "test 2",
+      picture: "",
+      data: [
+        { id: 0, text: "te st1", checked: false },
+        { id: 1, text: "te st2", checked: false },
+        { id: 1, text: "te st3", checked: false },
+      ],
+    },
+  ],
+};
 
 //set false all property in array of obgect  and set true just one of them by id
 const ValueSelector = (array, id, property) => {
@@ -96,6 +114,9 @@ export default {
       test: tests_data,
       pages: page_manager,
     };
+  },
+  created() {
+    appHeightWidth();
   },
   components: {
     main_screen,
@@ -148,7 +169,6 @@ body {
   margin: 0;
   box-sizing: border-box;
   width: var(--app-width, 100vw);
-  /* height: var(--app-height, 100vh);*/
 }
 .MAIN_DIV {
   background: #272727;

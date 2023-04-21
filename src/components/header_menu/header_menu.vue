@@ -48,12 +48,13 @@ export default {
   justify-content: space-between;
   flex-flow: row;
   align-items: center;
-
-  width: calc(var(--app-width, 100%));
-  max-width: calc(var(--app-width));
+  max-width: calc(var(--app-width), 100vw);
+  width: 100%;
 
   height: calc(var(--app-height, 100vh) * 46 / 568);
   top: 0;
+  right: 0;
+  left: 0;
   margin: 0;
   padding: 0;
   background: #181818;

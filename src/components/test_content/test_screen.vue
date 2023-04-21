@@ -6,20 +6,18 @@
       v-on:setNewPage="setMenuData"
       v-on:modalMenuShow="modalMenuShow"
     />
-    {{ menu_list }}
 
-    {{ showbrain }}
-    <test_item v-if="false" />
+    <test_card v-bind:card_data="test_data" />
   </div>
 </template>
 
 <script>
-import test_item from "@/components/test_content/test_item/test_item";
+import test_card from "@/components/test_content/test_item/test_card";
 import header_menu from "@/components/header_menu/header_menu";
 export default {
   props: ["test_data", "menu_list", "showbrain"],
   components: {
-    test_item,
+    test_card,
     header_menu,
   },
   methods: {
