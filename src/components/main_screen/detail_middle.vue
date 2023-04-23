@@ -13,11 +13,7 @@
       <img src="@/pics/325-01.png" alt="" />
     </div>
     <div class="btnblock">
-      <button_item
-        v-bind:title="'Пройти тест'"
-        v-bind:color="true"
-        v-on:goTest="goTestMenu"
-      />
+      <button_item v-bind:title="'Пройти тест'" v-bind:color="true" v-on:goTest="goTestMenu" />
     </div>
   </div>
 </template>
@@ -53,9 +49,12 @@ span {
   /* min-width: 517px;*/
   width: 100%;
   min-height: 511px;
+  max-height: calc(var(--app-height, 100vh) * 511 / 568);
+
   height: calc(var(--app-height, 100vh) * 511 / 568);
   background: #f3f3f2;
 }
+
 .textblock {
   margin: calc(var(--app-height, 100vh) * 16 / 568) 15%;
   /* Также по результатам теста вы получите подробные советы по определению наиболее перспективной для вашего типа интеллекта сферы деятельности, которая принесет вам скорейший финансовый результат. */
@@ -77,6 +76,7 @@ span {
   flex-shrink: 1;
   flex-basis: auto;
 }
+
 .imgblock {
   display: flex;
 
@@ -89,7 +89,10 @@ span {
 }
 
 .btnblock {
+  display: flex;
+  justify-content: center;
   flex-grow: 0;
+  width: 100%;
   margin-bottom: calc(var(--app-height, 100vh) * 16 / 568);
 }
 </style>

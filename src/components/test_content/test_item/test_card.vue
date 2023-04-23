@@ -1,31 +1,34 @@
 <template>
   <div class="container">
-    <progress_bar v-bind:tests_count="tests_count" v-bind:current="1" />
+    <progress_bar v-bind:tests_count="tests_count" v-bind:current="test_data.number" />
     <div class="test">
       <div class="title">
         <h1>
           {{ test_data.title }}
         </h1>
-        <div v-if="false" class="img">
-          <img src="@/pics/test01.png" alt="" />
+        <div v-if="picture" class="img">
+          <div :class="{ loader: loader }">
+            <img :src="'/img/' + image" v-bind:alt="image">
+          </div>
+          <div v-if="test_data.view === 4" class="testItem">
+            <div v-for="finish of test_data.data" :key="finish.id" class="loadingText">
+              <p> {{ finish.text }}</p>
+            </div>
+          </div>
         </div>
+
       </div>
       <div v-if="test_data.view === 1" class="testItem">
-        <test_item
-          v-for="variant of test_data.data"
-          :key="variant.id + 1000"
-          v-bind:variant="variant"
-          v-on:selectAnswer="selectTestAnswer"
-        />
+        <test_item v-for="variant of test_data.data" :key="variant.id" v-bind:variant="variant"
+          v-on:selectAnswer="selectTestAnswer" />
       </div>
+
     </div>
     <div v-if="test_data.view !== 4" class="buttonWrapper">
-      <button_item
-        v-bind:title="'далее'"
-        v-bind:color="next"
-        v-on:goTest="nextTestClick"
-      />
+      <button_item v-bind:title="'далее'" v-bind:color="next" v-on:goTest="nextTestClick" />
     </div>
+
+
   </div>
 </template>
 
@@ -40,12 +43,30 @@ export default {
     test_item,
     progress_bar,
     button_item,
+
   },
+
+
   computed: {
     next() {
       const active = this.test_data.data.filter((el) => el.checked);
       return active.length === 0 ? false : true;
     },
+    loader() {
+      return (this.test_data.view === 4) ? true : false;
+    },
+    picture() {
+      if (this.test_data.picture === "") return false;
+      return true;
+    },
+    image() {
+
+      return this.test_data.picture;//'loader.png'
+
+    },
+    fintest() {
+      return this.test_data.number === (this.tests_count - 1) ? true : false;
+    }
   },
 
   methods: {
@@ -70,13 +91,48 @@ export default {
   flex: 1 1 auto;
   height: 70%;
 }
+
 .img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 2 1 auto;
   /* image */
+  flex-direction: column;
 
   min-width: calc(var(--app-width, 100vh) * 173 / 320);
   min-height: calc(var(--app-height, 100vh) * 115 / 568);
 }
+
+.loader {
+  /* Group */
+  display: block;
+  width: 65px;
+  height: 68.32px;
+  animation: rotating 2s linear infinite;
+
+  /*background: #3bde7c;*/
+}
+
+.loadingText {
+  /* Определение стиля мышления........... .... ................................................... */
+
+  width: calc(var(--app-width, 100vh) * 276 / 320);
+  height: calc(var(--app-height, 100vh) * 60 / 568);
+
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-size: calc(var(--app-height, 100vh) * 14 / 568);
+  line-height: calc(var(--app-height, 100vh) * 19 / 568);
+  letter-spacing: 0.05em;
+
+  text-align: left;
+  color: #FFFFFF;
+
+
+}
+
 h1 {
   min-height: calc(var(--app-height, 100vh) * 40 / 568);
 
@@ -90,6 +146,7 @@ h1 {
 
   color: #ffffff;
 }
+
 .title {
   display: flex;
   flex-direction: column;
@@ -108,11 +165,13 @@ h1 {
   align-items: stretch;
   justify-content: flex-start;
   width: 100%;
-  gap: calc(var(--app-height, 100vh) * 10 / 568); /*19-*/
+  gap: calc(var(--app-height, 100vh) * 10 / 568);
+  /*19-*/
   overflow: hidden;
 
   flex: 3 1 auto;
 }
+
 .buttonWrapper {
   display: flex;
   justify-content: center;
@@ -122,12 +181,34 @@ h1 {
   margin-top: calc(var(--app-height, 100vh) * 20 / 568);
 }
 
+.wrapper_loading {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+
+  flex: 1 1 auto;
+  height: 70%;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  width: 100%;
   overflow: hidden;
   margin: 0;
   flex-wrap: 1;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

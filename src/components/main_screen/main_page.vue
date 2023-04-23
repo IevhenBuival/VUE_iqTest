@@ -7,17 +7,15 @@
         <div class="subBlock">
           <h1>тест на</h1>
         </div>
-        <div class="subBlock"><h1>определение IQ</h1></div>
+        <div class="subBlock">
+          <h1>определение IQ</h1>
+        </div>
       </div>
     </div>
     <div class="footerBlock columnBlock">
-      <div>
-        <button_item
-          v-bind:color="true"
-          v-bind:title="'Пройти тест'"
-          v-on:goTest="goTestMenu"
-        />
-      </div>
+
+      <button_item v-bind:color="true" v-bind:title="'Пройти тест'" v-on:goTest="goTestMenu" />
+
       <div class="textblock columnBlock">
         <p class="yellow">
           И получите рекомендации по развитию своего интеллекта
@@ -47,6 +45,7 @@ export default {
       this.$emit("setNewPage", 1);
     },
     goTestMenu() {
+
       this.$emit("setNewPage", 2);
     },
   },
@@ -74,11 +73,13 @@ export default {
   display: flex;
   margin: 3%;
   height: 33%;
+  width: 100%;
   justify-content: flex-start;
 
   flex-grow: 1;
   flex-shrink: 1;
 }
+
 .textblock {
   display: flex;
   margin: 5%;
@@ -88,12 +89,15 @@ export default {
   flex-shrink: 0;
   flex-basis: content;
 }
+
 .yellow {
   color: #ffc700;
 }
+
 .white {
   color: #ffffff;
 }
+
 h1 {
   font-family: "Yeseva One";
   font-style: normal;
@@ -107,6 +111,7 @@ h1 {
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
 .subBlock {
   display: flex;
   flex-wrap: row wrap;
@@ -115,18 +120,22 @@ h1 {
   height: calc(var(--app-height, 100vh) * 35 / 568);
   transform: translate(0, -25%);
 }
+
 .columnBlock {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
+
 .container {
   /* rain_bk */
   position: absolute;
 
   min-height: 647px;
   height: calc(var(--app-height, 100vh) * 647 / 568);
+  max-height: calc(var(--app-height, 100vh) * 647 / 568);
+
   margin-bottom: 30%;
   top: calc(var(--app-height, 100vh) * 46 / 568);
   left: 0;
@@ -140,6 +149,7 @@ h1 {
   background-size: 100% 100%;
   /*background-size: 100vh;*/
 }
+
 .block {
   display: flex;
   flex-basis: 15%;
@@ -149,6 +159,7 @@ h1 {
   align-items: center;
   background-color: red;
 }
+
 p {
   margin: 0;
 
@@ -190,6 +201,7 @@ h3 {
 
   color: #ffffff;
 }
+
 .circle {
   /* Ellipse */
 
@@ -202,6 +214,7 @@ h3 {
 
   background: #ffffff;
 }
+
 .clickArea {
   display: flex;
   margin-bottom: 0;

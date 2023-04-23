@@ -1,11 +1,7 @@
 <template>
   <div>
-    <header_menu
-      v-bind:menu_list="menu_list"
-      v-bind:showbrain="showbrain"
-      v-on:setNewPage="setMenuData"
-      v-on:modalMenuShow="modalMenuShow"
-    />
+    <header_menu v-bind:menu_list="menu_list" v-bind:showbrain="showbrain" v-on:setNewPage="setMenuData"
+      v-on:modalMenuShow="modalMenuShow" />
     <main_page v-on:setNewPage="setMenuData" />
     <template v-if="state">
       <detail_head />
@@ -48,6 +44,7 @@ export default {
       this.$emit("setTestAnswer", number, id);
     },
     setMenuData(id) {
+
       this.$emit("setMenuData", id);
     },
     modalMenuShow() {

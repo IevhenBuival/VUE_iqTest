@@ -2,13 +2,14 @@
   <div class="logoContainer" @:click="logoClick">
     <img class="brain" src="@/pics/rain_bk3.png" alt="" />
     <div class="header">
-      <p class="text">тест на определение IQ</p>
+      <p class="text">{{ title }}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: { title: String },
   methods: {
     logoClick: function () {
       this.$emit("modalShow");
@@ -34,18 +35,21 @@ export default {
 
   z-index: 2;
 }
+
 .brain {
   flex-grow: 1;
   flex-shrink: 2;
   flex-basis: calc(var(--app-height) * 46 / 568);
   max-height: calc(var(--app-height) * 46 / 568);
 }
+
 .header {
   flex-grow: 4;
   flex-shrink: 1;
 
   max-height: calc(var(--app-height) * 46 / 568);
 }
+
 .text {
   font-family: "Yeseva One";
   font-style: normal;

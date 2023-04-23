@@ -1,10 +1,6 @@
 <template>
-  <div
-    class="button"
-    :class="{ color: color, opacity: opacity }"
-    v-on:click="buttonCallback"
-    v-on:dblclick="buttonCallback"
-  >
+  <div class="button" :class="{ color: color, opacity: opacity }" v-on:click="buttonCallback"
+    v-on:dblclick="buttonCallback">
     <p class="title" v-on:click="buttonCallback">{{ title }}</p>
   </div>
 </template>
@@ -31,7 +27,8 @@ p {
   align-items: center;
   justify-content: center;
 
-  width: calc(var(--app-width) * 189 / 320);
+  min-width: calc(var(--app-width) * 189 / 320);
+  width: 80%;
   max-width: 250px;
   height: calc(var(--app-height) * 41 / 568);
   pointer-events: none;

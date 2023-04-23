@@ -31,6 +31,7 @@ p {
 
   color: #ffffff;
 }
+
 .bgconteiner {
   /* image */
 
@@ -41,6 +42,8 @@ p {
   z-index: 2;
   min-height: 339px;
   height: calc(var(--app-height, 100vh) * 339 / 568);
+  max-height: calc(var(--app-height, 100vh) * 339 / 568);
+
 
   /*require('./assets/media/img.jpg')*/
   background: url("~@/pics/image.png") no-repeat center;
@@ -58,20 +61,20 @@ p {
   min-height: 339px;
   height: calc(var(--app-height, 100vh) * 339 / 568);
 
-  background: radial-gradient(
-    84.34% 50.29% at 48.75% 49.71%,
-    #2950c2 0%,
-    rgba(38, 91, 199, 0.96) 40.62%,
-    rgba(39, 98, 187, 0) 85.42%
-  );
+  background: radial-gradient(84.34% 50.29% at 48.75% 49.71%,
+      #2950c2 0%,
+      rgba(38, 91, 199, 0.96) 40.62%,
+      rgba(39, 98, 187, 0) 85.42%);
   background-size: 100% 100%;
   /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
 
   /*background-size: 100vh;*/
 }
+
 .wrapper {
   display: flex;
 }
+
 .close {
   align-self: flex-end;
 }

@@ -2,16 +2,11 @@
   <div class="navbar">
     <div class="burger-brain">
       <burger_item v-on:modalShow="modalShow" />
-      <brain_logo v-if="showbrain" />
+      <brain_logo v-if="showbrain" v-bind:title="menuTitle" />
     </div>
     <div class="menu">
-      <div></div>
-      <header_title
-        v-for="item of menu_list"
-        :key="item.id"
-        v-bind:itemtext="item"
-        v-on:menuSelect="menuSelect"
-      />
+
+      <header_title v-for="item of menu_list" :key="item.id" v-bind:itemtext="item" v-on:menuSelect="menuSelect" />
     </div>
   </div>
 </template>
@@ -26,6 +21,14 @@ export default {
     header_title,
     burger_item,
     brain_logo,
+  },
+  computed: {
+    menuTitle() {
+      const currentmenu = this.menu_list.filter(el => el.active === true);
+      if (currentmenu.lenth !== 0) return currentmenu[0].header;
+      return "Error";
+    },
+
   },
 
   methods: {
@@ -49,9 +52,11 @@ export default {
   flex-flow: row;
   align-items: center;
   max-width: calc(var(--app-width), 100vw);
-  width: 100%;
+  /*width: 100%;*/
 
+  min-height: calc(var(--app-height, 100vh) * 46 / 568);
   height: calc(var(--app-height, 100vh) * 46 / 568);
+  max-height: calc(var(--app-height, 100vh) * 46 / 568);
   top: 0;
   right: 0;
   left: 0;
@@ -60,6 +65,7 @@ export default {
   background: #181818;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
 .menu {
   display: flex;
   flex-direction: row;
@@ -69,6 +75,7 @@ export default {
   flex-shrink: 0;
   flex-basis: 30%;
 }
+
 .burger-brain {
   display: flex;
   flex-direction: row;
@@ -79,6 +86,7 @@ export default {
   flex-shrink: 1;
   flex-basis: 30%;
 }
+
 @media (max-width: 480px) {
   .menu {
     display: none;

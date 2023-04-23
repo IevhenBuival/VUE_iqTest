@@ -10,14 +10,10 @@
     </div>
  </div>-->
   <div class="container">
-    <div
-      class="bugfix"
-      :class="{ selected: variant.checked }"
-      @:click="checkedClick(variant.id)"
-    >
+    <div class="bugfix" :class="{ selected: variant.checked }" @:click="checkedClick(variant.id)">
       <div class="circle" :class="{ checked: variant.checked }"></div>
       <div class="title" :class="{ selected: variant.checked }">
-        <p>{{ variant.text }}</p>
+        <p>{{ $filters.firstSymbolToUpperCase(variant.text) }}</p>
       </div>
     </div>
   </div>
@@ -28,6 +24,7 @@ export default {
   props: {
     variant: { type: Object, required: true },
   },
+
   methods: {
     checkedClick(id) {
       this.$emit("selectAnswer", id);
@@ -46,6 +43,7 @@ export default {
   min-height: calc(var(--app-height, 100vh) * 40 / 568);
   background: rgba(255, 255, 255, 0.15);
 }
+
 .container {
   display: inline-block;
   width: 100%;
@@ -80,10 +78,12 @@ export default {
   border-radius: 50%;
   border: #f2f3f3 solid calc(var(--app-height, 100vh) * 2 / 568);
 }
+
 .selected {
   background: #ffc700;
   color: #272727;
 }
+
 .checked {
   background: #2950c2;
   border: calc(var(--app-height, 100vh) * 2 / 568) solid #272727;
