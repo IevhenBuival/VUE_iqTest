@@ -1,14 +1,21 @@
 <template>
-  <div class="navbar">
-    <div class="burger-brain">
-      <burger_item v-on:modalShow="modalShow" />
-      <brain_logo v-if="showbrain" v-bind:title="menuTitle" />
-    </div>
-    <div class="menu">
+  <header class="header">
 
-      <header_title v-for="item of menu_list" :key="item.id" v-bind:itemtext="item" v-on:menuSelect="menuSelect" />
+    <div class="header__body ">
+      <div class="header__burger">
+        <burger_item v-on:modalShow="modalShow" />
+      </div>
+      <div class="header__braintitle">
+        <brain_logo v-if="showbrain" v-bind:title="menuTitle" />
+      </div>
+
+      <div class="header__menu">
+
+        <header_title v-for="item of menu_list" :key="item.id" v-bind:itemtext="item" v-on:menuSelect="menuSelect" />
+      </div>
     </div>
-  </div>
+
+  </header>
 </template>
 
 <script>
@@ -43,40 +50,115 @@ export default {
 </script>
 
 <style scoped>
-.navbar {
+.header {
   position: fixed;
-  z-index: 3;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-flow: row;
-  align-items: center;
-  max-width: calc(var(--app-width), 100vw);
-  /*width: 100%;*/
+  width: 100%;
 
-  min-height: calc(var(--app-height, 100vh) * 46 / 568);
-  height: calc(var(--app-height, 100vh) * 46 / 568);
-  max-height: calc(var(--app-height, 100vh) * 46 / 568);
   top: 0;
-  right: 0;
   left: 0;
-  margin: 0;
-  padding: 0;
+  right: 0;
   background: #181818;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  z-index: 50;
+
 }
 
-.menu {
+
+
+.header__body {
+  position: relative;
+  height: calc(var(--app-height, 100vh) * 46 / 568);
+  overflow: hidden;
   display: flex;
-  flex-direction: row;
-  flex-flow: row;
-  justify-content: flex-end;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 30%;
+  justify-content: flex-start;
+  align-items: center;
+
 }
 
-.burger-brain {
+
+.header__burger {
+  display: flex;
+  min-width: 46px;
+  min-height: calc(667/568*46px);
+  height: calc(100vh * 46 / 568);
+  height: calc(var(--app-height, 100vh) * 46 / 568);
+  flex: 0 0 15%;
+
+
+  justify-content: center;
+  align-items: center;
+
+}
+
+@media (min-width: 767px) {
+  .header__burger {
+    flex-basis: 7.5%;
+    min-width: 69px;
+
+  }
+}
+
+@media (min-width: 1020px) {
+  .header__burger {
+    display: none;
+    flex-basis: 7.5%;
+    min-width: 92px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .header__burger {
+    display: none;
+    flex-basis: 7.5%;
+    min-width: 92px;
+  }
+}
+
+.header__menu {
+  display: none;
+
+
+
+}
+
+@media (min-width: 1020px) {
+
+  .header__menu {
+    display: flex;
+    min-width: 640px;
+    flex-direction: row;
+    flex-flow: row;
+    justify-content: space-between;
+    flex: 1 1 auto;
+
+
+  }
+}
+
+@media (min-width: 1280px) {
+
+  .header__menu {
+    display: flex;
+    min-width: 960px;
+    flex-direction: row;
+    flex-flow: row;
+    justify-content: space-between;
+    flex: 1 1 auto;
+
+
+  }
+}
+
+.header__logo {
+  flex: 1 1 auto;
+
+  overflow: hidden;
+  position: relative;
+
+}
+
+.header__braintitle {
   display: flex;
   flex-direction: row;
   flex-flow: row;
@@ -84,12 +166,6 @@ export default {
   align-items: center;
   flex-grow: 1;
   flex-shrink: 1;
-  flex-basis: 30%;
-}
-
-@media (max-width: 480px) {
-  .menu {
-    display: none;
-  }
+  flex-basis: 50%;
 }
 </style>

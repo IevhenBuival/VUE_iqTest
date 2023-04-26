@@ -1,8 +1,8 @@
 <template>
-  <div class="logoContainer" @:click="logoClick">
-    <img class="brain" src="@/pics/rain_bk3.png" alt="" />
-    <div class="header">
-      <p class="text">{{ title }}</p>
+  <div class="logo__container" @:click="logoClick">
+    <img class="logo__img" src="@/pics/logo.png" alt="" />
+    <div class="logo__title">
+      <p class="logo__title_text">{{ title }}</p>
     </div>
   </div>
 </template>
@@ -19,38 +19,37 @@ export default {
 </script>
 
 <style scoped>
-.logoContainer {
+.logo__container {
   /* rain_bk3 */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-flow: row;
   align-items: center;
-  gap: 10px;
 
-  /* max-width: calc(
-      var(--app-width, 100vw)- (var(--app-height, 100vh) * 24 / 568)
-    );*/
+
   max-height: calc(var(--app-height) * 46 / 568);
 
-  z-index: 2;
 }
 
-.brain {
+.logo__img {
   flex-grow: 1;
   flex-shrink: 2;
   flex-basis: calc(var(--app-height) * 46 / 568);
   max-height: calc(var(--app-height) * 46 / 568);
 }
 
-.header {
+.logo__title {
+  display: flex;
+  justify-content: center;
   flex-grow: 4;
   flex-shrink: 1;
-
-  max-height: calc(var(--app-height) * 46 / 568);
+  min-height: 46px;
+  height: calc(var(--app-height) * 46 / 568);
 }
 
-.text {
+.logo__title_text {
+  margin: auto 10px;
   font-family: "Yeseva One";
   font-style: normal;
   font-weight: 400;
@@ -58,7 +57,7 @@ export default {
   line-height: calc(var(--app-height) * 14 / 568);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin: auto;
+
   color: #ffc700;
 }
 </style>

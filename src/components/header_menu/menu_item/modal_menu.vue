@@ -1,20 +1,14 @@
 <template>
-  <div class="modalWrapper" v-on:click="menuClick(lastpage)">
+  <div class="menu" v-on:click="menuClick(lastpage)">
     <div v-on:dblclick="menuClick(lastpage)">
-      <img class="icon" src="@/pics/icon.png" alt="" />
+      <img class="exit_icon" src="@/pics/icon.png" alt="" />
     </div>
-    <div
-      v-for="item of menu_list"
-      :key="item.id"
-      class="menuBlock"
-      v-on:click="menuClick(item.id)"
-    >
-      <h2
-        v-if="item.visible"
-        :class="[lastpage === item.id ? 'active' : '', 'text']"
-      >
-        {{ item.title }}
-      </h2>
+    <div class="container menu__wrapper">
+      <div v-for="item of menu_list" :key="item.id" class="menu__block" v-on:click="menuClick(item.id)">
+        <h2 v-if="item.visible" :class="[lastpage === item.id ? 'active' : '', 'menu__block_text']">
+          {{ item.title }}
+        </h2>
+      </div>
     </div>
   </div>
 </template>
@@ -31,10 +25,9 @@ export default {
 </script>
 
 <style scoped>
-.modalWrapper {
+.menu {
   display: block;
   position: fixed;
-  margin: 0;
 
   top: 0;
   left: 0;
@@ -45,35 +38,47 @@ export default {
 
   background: #181818;
 }
-.menuBlock {
-  position: relative;
-  top: calc(var(--app-height) * 100 / 568);
+
+.menu__block {
+  text-align: left;
 
   padding-left: calc(var(--app-height) * 23 / 568);
   margin-bottom: calc(var(--app-height) * 27 / 568);
   color: #ffffff;
 }
-.text {
-  display: block;
-  position: relative;
 
-  height: calc(var(--app-height) * 19 / 568);
-  text-align: left;
+.menu__wrapper {
+  margin-top: calc(var(--app-height) * 100 / 568);
+}
+
+.menu__block_text {
+  display: block;
+
+
+  width: 60%;
+  min-height: 19px;
+  height: calc(var(--app-height) * 44 / 568);
+  margin: 27px 23px 0 0;
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 300;
   font-size: calc(var(--app-height) * 16 / 568);
   line-height: calc(var(--app-height) * 22 / 568);
-  /* or 138% */
   text-transform: uppercase;
+
+
+
+
+
 }
+
 .active {
   color: #f4ce0c;
 }
-.icon {
+
+.exit_icon {
   position: absolute;
-  left: 87.19%;
   right: 4.06%;
   top: 3.16%;
-  bottom: 91.92%;
 }
 </style>

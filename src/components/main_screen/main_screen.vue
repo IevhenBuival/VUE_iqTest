@@ -2,12 +2,10 @@
   <div>
     <header_menu v-bind:menu_list="menu_list" v-bind:showbrain="showbrain" v-on:setNewPage="setMenuData"
       v-on:modalMenuShow="modalMenuShow" />
-    <main_page v-on:setNewPage="setMenuData" />
-    <template v-if="state">
-      <detail_head />
-      <detail_middle v-on:setNewPage="setMenuData" />
-      <detail_end v-on:setNewPage="setMenuData" />
-    </template>
+    <main_page v-if="true" v-on:setNewPage="setMenuData" />
+    <detail_head />
+    <detail_middle v-on:setNewPage="setMenuData" />
+    <detail_end v-on:setNewPage="setMenuData" />
   </div>
 </template>
 

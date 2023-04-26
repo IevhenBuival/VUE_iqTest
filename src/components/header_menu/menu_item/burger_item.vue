@@ -1,8 +1,8 @@
 <template>
   <div class="burger" @:click="burgerClick">
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
+    <span>
+
+    </span>
   </div>
 </template>
 
@@ -18,39 +18,56 @@ export default {
 
 <style scoped>
 .burger {
-  display: none;
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: calc(var(--app-height, 100vh) * 24 / 568);
-  height: 16px;
-  height: calc(var(--app-height, 100vh) * 16 / 568);
-  margin: 0 calc(var(--app-height, 100vh) * 17 / 568)
-    calc(var(--app-height, 100vh) * 16 / 568);
-  background: #181818;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.burger:hover {
+  display: block;
+  position: relative;
+
+  height: calc(var(--app-height, 100vh) * 20 / 568);
   cursor: pointer;
+
+
+  min-width: 24px;
+  width: 50%;
+  padding: 0 calc(var(--app-height, 100vh) * 16 / 568);
+
+  position: relative;
+  z-index: 5;
+
 }
-.line {
+
+
+.burger span {
+  position: absolute;
+  background-color: #696969;
+  left: 0;
   width: 100%;
-  height: 20%;
-  margin: 20% 0;
-  /* Path */
+  min-height: 3px;
+  height: calc(var(--app-height, 100vh) * 2.67 / 568);
+  top: 50%;
+  transform: translate(0, -50%);
 
-  /* position: absolute;
-  left: 4.69%;
-  right: 87.81%;
-  top: 0.87%;
-  bottom: 98.99%;*/
 
-  background: #dadada;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-@media (max-width: 480px) {
-  .burger {
-    display: block;
-  }
+
+
+.burger::before,
+.burger::after {
+  content: '';
+  background-color: #696969;
+  position: absolute;
+  width: 100%;
+  min-height: 3px;
+  height: calc(var(--app-height, 100vh) * 2.67 / 568);
+
+  left: 0;
+
+}
+
+.burger::before {
+  top: 0;
+}
+
+.burger::after {
+  bottom: 0;
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
-  <div class="button" :class="{ color: color, opacity: opacity }" v-on:click="buttonCallback"
-    v-on:dblclick="buttonCallback">
-    <p class="title" v-on:click="buttonCallback">{{ title }}</p>
+  <div class="button__wrapper">
+    <div class="button" :class="{ color: color, opacity: opacity }" v-on:click="buttonCallback"
+      v-on:dblclick="buttonCallback">
+      <p class="button__title" v-on:click="buttonCallback">{{ title }}</p>
+    </div>
   </div>
 </template>
 
@@ -26,10 +28,11 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
+  min-width: 189px;
+  width: calc(189 * (568px + var(--app-height, 100vh))*320 /568 / 568);
 
-  min-width: calc(var(--app-width) * 189 / 320);
-  width: 80%;
-  max-width: 250px;
+  min-height: 41px;
   height: calc(var(--app-height) * 41 / 568);
   pointer-events: none;
 
@@ -47,20 +50,24 @@ p {
   user-select: none;
 }
 
+.button__wrapper {
+  max-width: 100%;
+}
+
 .color {
   background: radial-gradient(50% 50% at 50% 50%, #ffc700 0%, #ffc700 100%);
   color: #0d0c11;
   pointer-events: all;
 }
 
-/* далее */
-.title {
-  height: calc(var(--app-height) * 17 / 568);
+
+
+.button__title {
 
   font-family: "Merriweather";
   font-style: normal;
   font-weight: 700;
-  font-size: calc(var(--app-height) * 14 / 568) 14px;
+  font-size: calc(var(--app-height) * 14 / 568);
   line-height: calc(var(--app-height) * 18 / 568);
   /* identical to box height */
   text-align: center;

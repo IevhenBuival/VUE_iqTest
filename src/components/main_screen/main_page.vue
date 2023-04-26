@@ -1,34 +1,38 @@
 <template>
-  <div class="container columnBlock">
-    <div class="headBlock columnBlock">
-      <h3 class="white">Пройдите точный и быстрый</h3>
+  <div class="main">
+    <div class="container">
+      <div class="main__wrapper ">
+        <div class="main__title_group">
+          <h2 class="white">Пройдите точный и быстрый</h2>
 
-      <div class="columnBlock">
-        <div class="subBlock">
-          <h1>тест на</h1>
-        </div>
-        <div class="subBlock">
-          <h1>определение IQ</h1>
-        </div>
-      </div>
-    </div>
-    <div class="footerBlock columnBlock">
+          <div class="main__header_group">
 
-      <button_item v-bind:color="true" v-bind:title="'Пройти тест'" v-on:goTest="goTestMenu" />
+            <h1>тест на</h1>
+            <h1>определение IQ</h1>
 
-      <div class="textblock columnBlock">
-        <p class="yellow">
-          И получите рекомендации по развитию своего интеллекта
-        </p>
-        <p class="white">
-          и улучшению финансового благосостояния и личной жизни
-        </p>
-      </div>
-      <div class="clickArea" @:click="setMenuData">
-        <div class="circle">
-          <img class="brain" src="@/pics/arrow.png" alt="" />
+          </div>
         </div>
-        <div class="detail">Подробнее</div>
+
+        <div class="main__brain_group"></div>
+        <div class="main__item_group">
+          <button_item v-bind:color="true" v-bind:title="'Пройти тест'" v-on:goTest="goTestMenu" />
+          <div class="main__text_group">
+            <p class="yellow">
+              И получите рекомендации по развитию своего интеллекта
+            </p>
+            <p class="white">
+              и улучшению финансового благосостояния и личной жизни
+            </p>
+          </div>
+        </div>
+        <div class="main__footer_group">
+          <a href="#detail" class="main__footer_block">
+            <div class="main__footer_block__circle_img">
+              <img src="@/pics/arrow.png" alt="" />
+            </div>
+            <div class="main__footer_block__font">Подробнее</div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -59,35 +63,172 @@ export default {
 </script>
 
 <style scoped>
-.headBlock {
-  display: flex;
-  height: 50%;
+.main {
+  position: absolute;
 
-  flex-grow: 0;
-  flex-shrink: 1;
-  justify-content: space-around;
-  align-items: center;
+  height: calc(var(--app-height, 100vh) * 640 / 693);
+  max-height: calc(var(--app-height, 100vh) * 640 / 693);
+
+  margin-bottom: 30%;
+  top: calc(var(--app-height, 100vh) * 46 / 693);
+  left: 0;
+  right: 0;
+
+
+
+  /*min-width: 517px;*/
+  /*max-width: 100%;*/
+
+  background: url("~@/pics/rain_bk.png") no-repeat;
+  background-size: 100% 100%;
+  /*background-size: 100vh;*/
 }
 
-.footerBlock {
-  display: flex;
-  margin: 3%;
-  height: 33%;
+
+
+
+h1 {
+  font-family: "Yeseva One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: calc(var(--app-height, 100vh) * 30 / 693);
+  line-height: calc(var(--app-height, 100vh) * 35 / 693);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+
+  color: #ffc700;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  /* определение IQ */
+
+
+}
+
+@media (min-width:767px) {
+  h1 {
+    font-size: calc(((var(--app-height, 100vh) * 30 / 693) + (15 *0.7) * ((100vw -640px) / 1280)));
+    line-height: calc(((var(--app-height, 100vh) * 35 / 693) + (15 *0.7) * ((100vw -640px) / 1280)));
+
+  }
+}
+
+h2 {
+  margin: 0 0 0 0;
+  transform: translate(0, 25%);
+
+  min-height: calc(var(--app-height, 100vh) * 52 / 693);
+
+  font-family: "PT Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-size: calc((var(--app-height, 100vh) * 18 / 693));
+  /*line-height: calc(var(--app-height, 100vh) * 24 / 693);*/
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width:767px) {
+  h2 {
+    font-size: calc(((var(--app-height, 100vh) * 18 / 693) + (18 *0.7) * (100vw -640) / 1280));
+  }
+}
+
+
+p {
+
+  font-family: "PT Serif";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  font-size: calc((var(--app-height, 100vh) * 15 / 693));
+  line-height: 19px;
+  line-height: calc((var(--app-height, 100vh) * 19 / 693));
+
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width:767px) {
+  p {
+    font-size: calc((var(--app-height, 100vh) * 17 / 693));
+    line-height: calc((var(--app-height, 100vh) * 22 / 693));
+  }
+}
+
+@media (min-width:1280px) {
+  p {
+    font-size: calc((var(--app-height, 100vh) * 20 / 693));
+    line-height: calc((var(--app-height, 100vh) * 24 / 693));
+  }
+}
+
+.main__wrapper {
   width: 100%;
-  justify-content: flex-start;
+  height: calc(var(--app-height, 100vh) * 522 / 693);
+  margin: calc(var(--app-height, 100vh) * 7 / 693) 0;
+  /* min-height: 647px;*/
+  display: flex;
+  flex-direction: column;
 
-  flex-grow: 1;
-  flex-shrink: 1;
+
+
 }
 
-.textblock {
+.main__title_group {
+  flex: 0 1 35%;
+  position: relative;
+
+
+}
+
+.main__header_group {
+  max-width: 75%;
+  margin: 0 auto;
+
+}
+
+
+
+@media (min-width:380px) {
+  .main__header_group {
+    max-width: 95%;
+    margin: 0 auto;
+  }
+}
+
+.main__brain_group {
+  flex: 0 1 22%;
+
+}
+
+.main__item_group {
+  flex: 0 1 auto;
+
+}
+
+@media (min-width:1280px) {
+  main__item_group {
+    flex: 1 1 auto;
+  }
+}
+
+.main__footer_group {
   display: flex;
-  margin: 5%;
-  align-items: center;
+  flex: 1 0 10%;
   justify-content: center;
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: content;
+
+}
+
+.main__text_group {
+  margin-top: 20px;
+}
+
+@media (min-width:1280px) {
+  .main__text_group {
+    margin-top: 10px;
+
+  }
 }
 
 .yellow {
@@ -98,129 +239,41 @@ export default {
   color: #ffffff;
 }
 
-h1 {
-  font-family: "Yeseva One";
-  font-style: normal;
-  font-weight: 400;
-  font-size: calc(var(--app-height, 100vh) * 29 / 568);
-  line-height: calc(var(--app-height, 100vh) * 35 / 568);
-  text-align: center;
-  text-transform: uppercase;
 
-  color: #ffc700;
-
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.subBlock {
+.main__footer_block {
   display: flex;
-  flex-wrap: row wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  height: calc(var(--app-height, 100vh) * 35 / 568);
-  transform: translate(0, -25%);
-}
-
-.columnBlock {
-  display: flex;
+  margin-top: 10px;
+  margin-bottom: 1px;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-}
-
-.container {
-  /* rain_bk */
-  position: absolute;
-
-  min-height: 647px;
-  height: calc(var(--app-height, 100vh) * 647 / 568);
-  max-height: calc(var(--app-height, 100vh) * 647 / 568);
-
-  margin-bottom: 30%;
-  top: calc(var(--app-height, 100vh) * 46 / 568);
-  left: 0;
-  right: 0;
-  width: 100%;
-  max-width: calc(var(--app-width), 100vw);
-  /*min-width: 517px;*/
-  /*max-width: 100%;*/
-
-  background: url("~@/pics/rain_bk.png") no-repeat;
-  background-size: 100% 100%;
-  /*background-size: 100vh;*/
-}
-
-.block {
-  display: flex;
-  flex-basis: 15%;
-  flex-grow: 1;
   flex-shrink: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: red;
+
 }
 
-p {
-  margin: 0;
 
-  font-family: "PT Serif";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 19px;
-  text-align: center;
-  letter-spacing: 0.05em;
-}
 
-h3 {
-  margin: 0;
-  transform: translate(0, 25%);
-
-  height: calc(var(--app-height, 100vh) * 52 / 568);
-
-  font-family: "PT Serif";
-  font-style: normal;
-  font-weight: 400;
-  font-size: calc(var(--app-height, 100vh) * 18 / 568);
-  line-height: calc(var(--app-height, 100vh) * 24 / 568);
-  text-align: center;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* подробнее */
-
-.detail {
-  font-family: "PT Serif";
-  font-style: normal;
-  font-weight: 400;
-  font-size: calc(var(--app-height, 100vh) * 8 / 568);
-  line-height: calc(var(--app-height, 100vh) * 11 / 568);
-  text-align: center;
-  letter-spacing: 0.05em;
-
-  color: #ffffff;
-}
-
-.circle {
-  /* Ellipse */
-
+.main__footer_block__circle_img {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(var(--app-height, 100vh) * 16 / 568);
-  height: calc(var(--app-height, 100vh) * 16 / 568);
+  width: calc(var(--app-height, 100vh) * 16 / 693);
+  height: calc(var(--app-height, 100vh) * 16 / 693);
   border-radius: 50%;
 
   background: #ffffff;
 }
 
-.clickArea {
-  display: flex;
-  margin-bottom: 0;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 1;
+
+
+.main__footer_block__font {
+  font-family: "PT Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-size: calc(var(--app-height, 100vh) * 8 / 693);
+  line-height: calc(var(--app-height, 100vh) * 11 / 693);
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #ffffff;
 }
 </style>

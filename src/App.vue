@@ -1,18 +1,22 @@
 <template>
-  <div id="app">
-    <main_screen v-if="pages.pagedata[0].active" class="MAIN_DIV" v-bind:menu_list="menu" v-bind:test_data="test"
-      v-on:setTestAnswer="changeTestData" v-on:setMenuData="changeMenuData" v-bind:state="false"
-      v-bind:showbrain="pages.showbrain" />
-    <main_screen v-else-if="pages.pagedata[1].active" class="MAIN_DIV" v-bind:menu_list="menu" v-bind:test_data="test"
-      v-on:setMenuData="changeMenuData" v-bind:state="true" v-bind:showbrain="pages.showbrain" />
-    <modal_menu v-else-if="pages.pagedata[3].active" v-bind:menu_list="menu" v-bind:lastpage="pages.lastpage"
-      v-on:setMenuData="changeMenuData" />
+  <div id="app" class="main_wrapper">
+    <test v-if="false" />
+    <div>
+      <main_screen v-if="pages.pagedata[0].active" class="MAIN_DIV" v-bind:menu_list="menu" v-bind:test_data="test"
+        v-on:setTestAnswer="changeTestData" v-on:setMenuData="changeMenuData" v-bind:state="false"
+        v-bind:showbrain="pages.showbrain" />
+      <main_screen v-else-if="pages.pagedata[1].active" class="MAIN_DIV" v-bind:menu_list="menu" v-bind:test_data="test"
+        v-on:setMenuData="changeMenuData" v-bind:state="true" v-bind:showbrain="pages.showbrain" />
+      <modal_menu v-else-if="pages.pagedata[3].active" v-bind:menu_list="menu" v-bind:lastpage="pages.lastpage"
+        v-on:setMenuData="changeMenuData" />
 
-    <test_screen v-else-if="pages.pagedata[2].active" v-bind:menu_list="menu" v-bind:test_data="test"
-      v-bind:showbrain="pages.showbrain" v-on:setMenuData="changeMenuData" v-on:setTestDate="changeTestData"
-      v-on:setTestNumber="changeCurrentTest" />
+      <test_screen v-else-if="pages.pagedata[2].active" v-bind:menu_list="menu" v-bind:test_data="test"
+        v-bind:showbrain="pages.showbrain" v-on:setMenuData="changeMenuData" v-on:setTestDate="changeTestData"
+        v-on:setTestNumber="changeCurrentTest" />
 
-    <finish_screen v-else v-bind:menu_list="menu" v-bind:showbrain="pages.showbrain" v-on:setMenuData="changeMenuData" />
+      <finish_screen v-else v-bind:menu_list="menu" v-bind:showbrain="pages.showbrain"
+        v-on:setMenuData="changeMenuData" />
+    </div>
   </div>
 </template>
 
@@ -21,6 +25,7 @@ import main_screen from "@/components/main_screen/main_screen";
 import modal_menu from "@/components/header_menu/menu_item/modal_menu";
 import test_screen from "@/components/test_content/test_screen";
 import finish_screen from "@/components/test_content/finish_screen";
+import test from "@/for_test.vue";
 
 const appHeightWidth = () => {
   const doc = document.documentElement;
@@ -142,6 +147,7 @@ export default {
     modal_menu,
     test_screen,
     finish_screen,
+    test,
   },
   methods: {
     changeTestData(number, id) {
@@ -189,6 +195,16 @@ export default {
 </script>
 
 <style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  overflow-x: hidden;
+}
+
 :root {
   --app-height: 100%;
   --app-width: 100%;
@@ -207,22 +223,63 @@ export default {
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  width: var(--app-width, 100vw);
+  height: 100%;
+  background: grey;
+  font-family: Arial, sans-serif;
+
+
+
 }
 
-.MAIN_DIV {
+
+
+
+.main_wrapper {
   background: #272727;
+  min-width: 320px;
+  margin: 0px auto;
+  padding: 0px 3px;
   /* width: var(--app-width, 100vw);*/
   /* height: 300vh;*/
 }
 
-@media screen and (max-width: 400px) {
-  .MAIN_DIV {
-    background: #272727;
-    /*  width: var(--app-width);*/
+@media (min-width: 767px) {
+  .main_wrapper {
+    min-width: 640px;
+    padding: 0px 6px;
+
+  }
+}
+
+@media (min-width: 1080px) {
+  .main_wrapper {
+    min-width: 960px;
+    padding: 0px 9px;
+
+  }
+}
+
+@media (min-width: 767px) {
+  .main_wrapper {
+    min-width: 1280px;
+    padding: 0px 12px;
+
+  }
+}
+
+.container {
+  max-width: 320px;
+  margin: 0 auto;
+
+
+}
+
+
+@media (min-width: 767px) {
+  .container {
+    max-width: auto;
+    min-width: 640px;
+
   }
 }
 </style>

@@ -30,10 +30,14 @@
                     <div class="image"><img src="@/pics/copyright.png" alt="" /></div>
                 </div>
             </div>
-
+            <div class="rightLightning">
+                <img src="~@/pics/lightning.png" alt="" />
+            </div>
+            <div class="leftLightning1 uno">
+                <img src="~@/pics/lightning.png" alt="" />
+            </div>
         </div>
-        <div class="rightLightning"></div>
-        <div class="leftLightning"></div>
+
     </div>
 </template>
   
@@ -69,21 +73,49 @@ span {
     color: #ffc700;
 }
 
+.uno2 {
+    position: absolute;
+
+    top: 150px;
+    right: 0px;
+    margin: 0 5px;
+    height: 165px;
+    width: 165px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: center;
+    z-index: 10;
+
+}
+
+.uno {
+    position: absolute;
+
+    top: 100px;
+    left: 0px;
+    margin: 0 5px;
+    width: 165px;
+    height: 165px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: center;
+    font-size: 0;
+    z-index: 10;
+    /* background: url("~@/pics/rain_bk2.png") no-repeat top center;
+    background-size: 100% 100%;*/
+
+}
+
+
+
 .container {
     /* rain_bk2 */
-    position: absolute;
-    display: flex;
     /* min-width: 517px;*/
-    margin: 0;
-    padding: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
 
-    max-height: calc(var(--app-height, 100vh) * 672 / 568);
+
     height: calc(var(--app-height, 100vh) * 672 / 568);
-    min-height: 672px;
+    height: calc(var(--app-height, 100vh) * 672 / 568);
+    min-height: max(100vh, 672px);
     top: calc(var(--app-height, 100vh) * 46 / 568);
     /*require('./assets/media/img.jpg')*/
     background: url("~@/pics/rain_bk2.png") no-repeat top center;
@@ -91,27 +123,38 @@ span {
     /*background-size: 100vh;*/
 }
 
+
 .rightLightning {
+    display: inline-block;
     position: absolute;
+    font-size: 0;
+    right: 0;
+    top: 448px;
+    z-index: 1;
+    text-align: center;
+    vertical-align: right;
+    transform: translate(50%, 0) rotate(53.15deg);
+}
+
+img {
     width: calc(var(--app-height, 100vh) * 165 / 568);
     height: calc(var(--app-height, 100vh) * 165 / 568);
-    right: 0;
-    z-index: 1;
-    top: calc(var(--app-height, 100vh) * 10 / 568);
-    transform: translate(50%, 0) rotate(53.15deg);
-    background: url(~@/pics/lightning.png) no-repeat;
-    background-size: 100% 100%;
+
 }
 
 .leftLightning {
-    position: absolute;
+    display: absolute;
     width: calc(var(--app-height, 100vh) * 165 / 568);
     height: calc(var(--app-height, 100vh) * 165 / 568);
     left: 0;
+
+    line-height: 0;
+    display: inline-block;
+    text-align: center;
+    vertical-align: center;
+
     z-index: 1;
     transform: translate(-50%, 0) rotate(-53.15deg);
-    top: calc(var(--app-height, 100vh) * 10 / 568);
-
     background: url(~@/pics/lightning.png) no-repeat;
     background-size: 100% 100%;
 }

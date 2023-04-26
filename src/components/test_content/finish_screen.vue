@@ -1,20 +1,33 @@
 <template>
-  <div>
+  <div class="container">
+
     <header_menu v-bind:menu_list="menu_list" v-bind:showbrain="showbrain" v-on:setNewPage="setMenuData"
       v-on:modalMenuShow="modalMenuShow" />
-    <finish_page />
 
+
+    <div class="Wrapper">
+      <hat_contant />
+      <div class="leftLightning">
+        <img class="LightnungImg1" src="@/pics/lightning.png" alt="" />
+      </div>
+      <div class="rightLightning">
+        <img class="LightnungImg1" src="@/pics/lightning.png" alt="" />
+      </div>
+
+
+
+    </div>
   </div>
 </template>
 
 <script>
 import header_menu from "@/components/header_menu/header_menu"
-import finish_page from "@/components/test_content/finish_item/finish_page"
+import hat_contant from "@/components/test_content/finish_item/hat_contant"
 export default {
   props: ["menu_list", "showbrain"],
   components: {
     header_menu,
-    finish_page,
+    hat_contant,
   }, methods: {
     setMenuData: function (id) {
       this.$emit("setMenuData", id);
@@ -43,24 +56,29 @@ export default {
 }
 
 .wrapper {
-  display: flex;
+  display: block;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+}
+
+.test {
+  display: inline-block;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
 
-  flex: 1 1 auto;
+
+  position: relative;
+
+  bottom: 0px;
   width: 100%;
-  max-height: calc(var(--app-height, 100vh) * 672 / 568);
-  height: calc(var(--app-height, 100vh) * 672 / 568);
-  min-height: 672px;
+  /*max-height: calc(var(--app-height, 100vh) * 672 / 568);**/
+  height: max(calc(var(--app-height, 100vh) * 672 / 568), 100vh);
 
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: -150px;
+
 
   z-index: 0;
 
@@ -78,48 +96,68 @@ export default {
 
 }
 
-.rightLightning {
-  position: absolute;
+.fontSize0 {
+  font-size: 0;
+  width: 300px;
+  max-width: 25%;
+  border: 5px solid red;
 
-
-
-  width: calc(var(--app-height, 100vh) * 174 / 568);
-  height: calc(var(--app-height, 100vh) * 174 / 568);
-  right: -75px;
-  bottom: 100px;
-  z-index: 1;
-
-
-  background: url(~@/pics/lightning.png) no-repeat;
-  background-size: 100% 100%;
-  /* lightning_PNG9 */
-
-
-
-
-
-  transform: rotate(53.15deg);
+  background: yellow;
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
 
 }
 
-.leftLightning {
+.fontSize0::after {
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+
+}
+
+.rightLightning {
+  display: inline-block;
   position: absolute;
+  line-height: 0;
 
-  transform: translate(-50%, 0) rotate(-53.15deg);
+  font-size: 0;
+  right: 0px;
 
-  top: calc(var(--app-height, 100vh) * 402 / 568);
+  top: calc(var(--app-height, 100vh) *448 / 568);
+  z-index: 2;
+  text-align: center;
+  vertical-align: top;
+  width: calc(var(--app-height, 100vh) * 165 / 568);
+  max-width: 100%;
+  height: calc(var(--app-height, 100vh) * 165 / 568);
+  transform: translate(100%, 0) rotate(53.15deg);
+
+}
+
+.LightnungImg {
+  max-width: 100%;
+}
+
+.leftLightning {
+  display: inline-block;
+  line-height: 0;
+  position: absolute;
+  vertical-align: top;
   left: 0;
 
+  font-size: 0;
+  z-index: 2;
   width: calc(var(--app-height, 100vh) * 165 / 568);
+  max-width: 25%;
   height: calc(var(--app-height, 100vh) * 165 / 568);
+  text-align: center;
+  transform: translate(-50%, 0) rotate(-53.15deg);
+  top: calc(var(--app-height, 100vh) * 402 / 568);
 
-  z-index: 1;
-
-
-
-  background: url(~@/pics/lightning.png) no-repeat;
-
-  background-size: 100% 100%;
 }
 
 .picture {
