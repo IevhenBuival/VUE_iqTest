@@ -14,8 +14,8 @@
         v-bind:showbrain="pages.showbrain" v-on:setMenuData="changeMenuData" v-on:setTestDate="changeTestData"
         v-on:setTestNumber="changeCurrentTest" />
 
-      <finish_screen v-else v-bind:menu_list="menu" v-bind:showbrain="pages.showbrain"
-        v-on:setMenuData="changeMenuData" />
+      <finish_screen v-else v-bind:menu_list="menu" v-bind:showbrain="pages.showbrain" v-on:setMenuData="changeMenuData"
+        v-on:finishClick="getFinResult" />
     </div>
   </div>
 </template>
@@ -26,6 +26,7 @@ import modal_menu from "@/components/header_menu/menu_item/modal_menu";
 import test_screen from "@/components/test_content/test_screen";
 import finish_screen from "@/components/test_content/finish_screen";
 import test from "@/for_test.vue";
+import fetchData from "@/hooks/fetchData";
 
 const appHeightWidth = () => {
   const doc = document.documentElement;
@@ -189,6 +190,12 @@ export default {
       }
 
     },
+    async getFinResult() {
+      const response = await fetchData();
+      if (response.result === "ok") {
+        return response.data;
+      } else return
+    },
   },
 };
 
@@ -236,11 +243,20 @@ body {
 
 .main_wrapper {
   background: #272727;
-  min-width: 320px;
+  min-width: 280px;
   margin: 0px auto;
-  padding: 0px 3px;
+  padding: 0px 0px;
   /* width: var(--app-width, 100vw);*/
   /* height: 300vh;*/
+}
+
+@media (min-width:280px) {
+  .main_wrapper {
+    padding: 0px 3px;
+    min-width: 320px;
+
+  }
+
 }
 
 @media (min-width: 767px) {
@@ -259,7 +275,7 @@ body {
   }
 }
 
-@media (min-width: 767px) {
+@media (min-width: 1280px) {
   .main_wrapper {
     min-width: 1280px;
     padding: 0px 12px;
@@ -267,18 +283,16 @@ body {
   }
 }
 
+
 .container {
   max-width: 320px;
   margin: 0 auto;
-
-
 }
 
 
 @media (min-width: 767px) {
   .container {
-    max-width: auto;
-    min-width: 640px;
+    max-width: 640px;
 
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="test_card">
     <progress_bar v-bind:tests_count="tests_count" v-bind:current="test_data.number" />
     <div class="test">
       <div class="title">
@@ -81,12 +81,24 @@ export default {
 </script>
 
 <style scoped>
+.test_card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 100%;
+  margin: 0;
+
+
+  overflow: hidden;
+
+}
+
 .test {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
-  width: 100%;
+  min-width: 100%;
 
   flex: 1 1 auto;
   height: 70%;
@@ -192,15 +204,7 @@ h1 {
   height: 70%;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  width: 100%;
-  overflow: hidden;
-  margin: 0;
-  flex-wrap: 1;
-}
+
 
 @keyframes rotating {
   from {

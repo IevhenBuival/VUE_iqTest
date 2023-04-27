@@ -29,11 +29,11 @@ p {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  min-width: 189px;
+  min-width: 200px;
   width: calc(189 * (568px + var(--app-height, 100vh))*320 /568 / 568);
 
-  min-height: 41px;
-  height: calc(var(--app-height) * 41 / 568);
+  min-height: 44px;
+  height: calc(var(--app-height) * 44 / 568);
   pointer-events: none;
 
   color: #8e8e8e;

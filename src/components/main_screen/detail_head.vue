@@ -58,8 +58,8 @@ p {
   z-index: 2;
 
   height: calc(var(--app-height, 100vh) * 339 / 568);
+  min-height: calc(var(--app-height, 100vh) * 339 / 568);
   max-height: calc(var(--app-height, 100vh) * 339 / 568);
-
 
   /*require('./assets/media/img.jpg')*/
   background: radial-gradient(84.34% 50.29% at 48.75% 49.71%,
@@ -78,7 +78,6 @@ p {
   ;
   width: 100%;
   overflow-y: hidden;
-  min-height: calc(var(--app-height, 100vh) * 2 / 568);
 
 
 
@@ -101,7 +100,9 @@ p {
   display: block;
   margin: 0;
   align-self: flex-start;
+  min-width: 80%;
   flex: 1 1 auto;
+
 }
 
 

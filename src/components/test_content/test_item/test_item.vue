@@ -9,7 +9,7 @@
       <strong>{{ variant.text }}</strong>
     </div>
  </div>-->
-  <div class="container">
+  <div class="item_container">
     <div class="bugfix" :class="{ selected: variant.checked }" @:click="checkedClick(variant.id)">
       <div class="circle" :class="{ checked: variant.checked }"></div>
       <div class="title" :class="{ selected: variant.checked }">
@@ -44,7 +44,7 @@ export default {
   background: rgba(255, 255, 255, 0.15);
 }
 
-.container {
+.item_container {
   display: inline-block;
   width: 100%;
 }

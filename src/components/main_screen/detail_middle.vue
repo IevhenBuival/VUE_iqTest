@@ -125,7 +125,7 @@ span {
 
 @media (min-width: 767px) {
   .datail_middle__img_block {
-    min-width: 100%;
+    min-width: 75%;
   }
 }
 

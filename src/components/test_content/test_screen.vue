@@ -1,5 +1,5 @@
 <template>
-  <div class="testScreen">
+  <div class="test_screen">
     <header_menu v-bind:menu_list="menu_list" v-bind:showbrain="showbrain" v-on:setNewPage="setMenuData"
       v-on:modalMenuShow="modalMenuShow" />
     <test_card v-bind:test_data="test_data.tests[test_data.current]" v-bind:tests_count="test_data.tests.length"
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style scoped>
-.testScreen {
+.test_screen {
   position: absolute;
 
   width: 320px;
@@ -52,7 +52,6 @@ export default {
   min-height: calc(var(--app-height) * 522 / 568);
   max-height: calc(var(--app-height) * 522 / 568);
   top: calc(var(--app-height) * 46 / 568);
-  background: rgba(13, 12, 17, 0.728);
   background: url("~@/pics/rain_bk2.png") no-repeat top center;
   background-size: 100% 100%;
 }
