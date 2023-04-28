@@ -24,7 +24,7 @@
       <div class="finish__action_block">
         <div class="finish__action_title">
           <p>Звоните скорее, запись доступна всего</p>
-          <p><span>10:00</span> МИНУТ</p>
+          <p><span>{{time}}</span> МИНУТ</p>
         </div>
         <div class="finish__action_area" v-on:click="finishClick">
           <div class="finish__action_picture">
@@ -67,6 +67,18 @@ export default {
     hat_contant,
     loading_item,
   },
+
+  mounted() {
+   
+     this.setNewTime(600);
+
+   
+   
+  },
+ 
+ data() {
+    return {time:0,finishtime: Date.now()+10*60*1000}
+ },
   computed: {
     response() {
       if (this.result_data.response !== undefined)
@@ -74,27 +86,25 @@ export default {
       return false;
     },
     convertJson() {
-      // let rez = "";
-
       const text = [];
       const keys = Object.keys(this.result_data.response);
       keys.forEach((key) => {
         text.push(`${key}: ${this.result_data.response[key]} `)
       });
-      //, (key, value) => {
-      // if (typeof value === "string") {
-      //   console("value=" + value);
-      //   const newvalue = value.replace("/\r\n/g", "{}");
-      //  rez = rez + `value= ${key}: ${newvalue}`;
-      // } else {
-      // return `${key}: ${value}`;
-      // }
-      // })
-
       return text;
     },
   },
   methods: {
+    setNewTime: function (col) {
+        if (col >=0)
+        setTimeout(() => {
+         col=col-1;
+         this.time=`${Math.floor((this.finishtime-Date.now())/1000/60)}:${Math.floor((this.finishtime-Date.now())/1000)-60*Math.floor((this.finishtime-Date.now())/1000/60)}`;
+         this.setNewTime(col)
+          
+
+      }, 1000);
+    },
     setMenuData: function (id) {
       this.$emit("setMenuData", id);
     },

@@ -101,6 +101,8 @@ export default {
         //  setTimeout(() => {
         this.changeMenuData(4);
         this.result.finish = true;
+       
+     
         //}, 5000);
         // this.result.loading = false;
 
@@ -129,7 +131,6 @@ export default {
     async getFinResult() {
       this.result.error = false;
       this.result.loading = true;
-      setTimeout(() => {
         fetchData().then(res => {
           if (res.result === "ok") {
             this.result.response = res.data;
@@ -142,10 +143,11 @@ export default {
           }
         }
         );
-      }, 1000);
+      
 
 
     },
+   
   },
 };
 
