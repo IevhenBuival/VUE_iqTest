@@ -1,5 +1,5 @@
 <template>
-  <div class="finish">
+  <div class="finish" :class="{ isresponse: response }">
     <div>
 
       <header_menu v-bind:menu_list="menu_list" v-bind:showbrain="showbrain" v-on:setNewPage="setMenuData"
@@ -7,7 +7,18 @@
 
 
       <div class="finish__contant_wrapper">
-        <hat_contant />
+        <div v-if="result_data.loading">
+          <loading_item />
+
+        </div>
+        <div v-else-if="result_data.error">
+          <p>"Ошибка"</p>
+          <p>{{ result_data.errortext }}</p>
+          <p>"Повторите попытку"</p>
+        </div>
+
+
+        <hat_contant v-else />
       </div>
 
       <div class="finish__action_block">
@@ -22,9 +33,13 @@
           <div class="finish__action_text"><span>позвонить</span> и прослушать
             результат </div>
         </div>
-
+        <div v-if="result_data.response !== undefined">
+          <div header_title v-for="item of convertJson" :key="item.index">
+            {{ item }}
+          </div>
+        </div>
       </div>
-      <footer class="finish__footer">
+      <footer class="finish__footer" :class="{ response: response }">
         TERMENI SI CONDITII: ACESTA ESTE UN SERVICIU DE DIVERTISMENT. PRIN FOLOSIREA LUI DECLARATI CA AVETI 18 ANI
         IMPLINITI,
       </footer>
@@ -43,12 +58,43 @@
 <script>
 import header_menu from "@/components/header_menu/header_menu"
 import hat_contant from "@/components/test_content/finish_item/hat_contant"
+import loading_item from "@/components/test_content/finish_item/loading_item"
+
 export default {
-  props: ["menu_list", "showbrain"],
+  props: ["menu_list", "showbrain", "result_data"],
   components: {
     header_menu,
     hat_contant,
-  }, methods: {
+    loading_item,
+  },
+  computed: {
+    response() {
+      if (this.result_data.response !== undefined)
+        return true
+      return false;
+    },
+    convertJson() {
+      // let rez = "";
+
+      const text = [];
+      const keys = Object.keys(this.result_data.response);
+      keys.forEach((key) => {
+        text.push(`${key}: ${this.result_data.response[key]} `)
+      });
+      //, (key, value) => {
+      // if (typeof value === "string") {
+      //   console("value=" + value);
+      //   const newvalue = value.replace("/\r\n/g", "{}");
+      //  rez = rez + `value= ${key}: ${newvalue}`;
+      // } else {
+      // return `${key}: ${value}`;
+      // }
+      // })
+
+      return text;
+    },
+  },
+  methods: {
     setMenuData: function (id) {
       this.$emit("setMenuData", id);
     },
@@ -85,6 +131,12 @@ export default {
   background: url("~@/pics/rain_bk2.png") no-repeat top center;
 
   background-size: 100% 100%;
+}
+
+.isresponse {
+  overflow: auto;
+  height: 100%;
+
 }
 
 .finish__contant_wrapper {
@@ -265,6 +317,11 @@ export default {
   text-transform: uppercase;
 
   color: rgba(255, 255, 255, 0.5);
+
+}
+
+.response {
+  position: relative;
 
 }
 
