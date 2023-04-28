@@ -180,8 +180,8 @@ span {
 
 @media (min-width: 1024px) {
   .datail_end__main p {
-    font-size: calc(var(--app-height, 100vh) * 28 / 568);
-    line-height: calc(19px + var(--app-height, 100vh) * 16 / 568);
+    font-size: calc(var(--app-height, 100vh) * 20 / 568);
+    line-height: calc(var(--app-height, 100vh) * 24 / 568);
 
   }
 }

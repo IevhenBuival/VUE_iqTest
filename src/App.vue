@@ -1,12 +1,11 @@
 <template>
   <div id="app" class="main_wrapper">
-    <test v-if="false" />
     <div>
       <main_screen v-if="pages.pagedata[0].active" class="MAIN_DIV" v-bind:menu_list="menu" v-bind:test_data="test"
         v-on:setTestAnswer="changeTestData" v-on:setMenuData="changeMenuData" v-bind:state="false"
-        v-bind:showbrain="pages.showbrain" />
+        v-bind:showbrain="pages.showbrain" v-bind:scroll="pages.pagedata[0].scroll" />
       <main_screen v-else-if="pages.pagedata[1].active" class="MAIN_DIV" v-bind:menu_list="menu" v-bind:test_data="test"
-        v-on:setMenuData="changeMenuData" v-bind:state="true" v-bind:showbrain="pages.showbrain" />
+        v-on:setMenuData="changeMenuData" v-bind:state="true" v-bind:showbrain="pages.showbrain" v-bind:scroll="0" />
       <modal_menu v-else-if="pages.pagedata[3].active" v-bind:menu_list="menu" v-bind:lastpage="pages.lastpage"
         v-on:setMenuData="changeMenuData" />
 
@@ -25,324 +24,30 @@ import main_screen from "@/components/main_screen/main_screen";
 import modal_menu from "@/components/header_menu/menu_item/modal_menu";
 import test_screen from "@/components/test_content/test_screen";
 import finish_screen from "@/components/test_content/finish_screen";
-import test from "@/for_test.vue";
 import fetchData from "@/hooks/fetchData";
+import initial_main_menu from "@/data/main_menu.js";
+import initial_page_manager from "@/data/page_manager.js"
+import initial_tests_data from "@/data/tests_data.js";
+import initial_result_data from "@/data/result_data.js";
+
+
+
+const page_manager = initial_page_manager;
+const main_menu = initial_main_menu;
+const tests_data = initial_tests_data;
+const result_data = initial_result_data;
+
+
 
 const appHeightWidth = () => {
   const doc = document.documentElement;
   doc.style.setProperty("--app-height", `max(568px,${window.innerHeight}px)`);
   doc.style.setProperty("--app-width", `minmax(${window.innerWidth}px,100vw)`);
 
+
 };
 window.addEventListener("resize", appHeightWidth);
 ScreenOrientation.onchange = appHeightWidth;
-//appHeightWidth();
-
-const main_menu = [
-  { id: 0, title: "Главная", page: 0, active: true, visible: true, header: "тест на определение IQ" },
-  { id: 1, title: "Информация о тесте", page: 1, active: false, visible: true, header: "тест на определение IQ" },
-  { id: 2, title: "Пройти тест", page: 2, active: false, visible: true, header: "тест на определение IQ" },
-  { id: 3, title: "modal menu", page: 3, active: false, visible: false, header: "тест на определение IQ" },
-  { id: 4, title: "finish page!", page: 4, active: false, visible: false, header: "готово!" },
-];
-
-const page_manager = {
-  lastpage: 0,
-  showbrain: false,
-  pagedata: [
-    { id: 0, name: "main", active: true },
-    { id: 1, name: "full", active: false },
-    { id: 2, name: "test", active: false },
-    { id: 3, name: "modal", active: false },
-    { id: 4, name: "finish", active: false },
-  ],
-};
-
-let tests_data = {
-  current: 0,
-  tests: [
-    {
-      number: 0,
-      view: 1,
-      title: "ваш пол:",
-      picture: "",
-      data: [
-        { id: 0, text: "мужчина", checked: false },
-        { id: 1, text: "женщина", checked: false },
-      ],
-    },
-    {
-      number: 1,
-      view: 1,
-      title: "укажите ваш возраст:",
-      picture: "",
-      data: [
-        { id: 0, text: "До 18", checked: false },
-        { id: 1, text: "От 18 до 28", checked: false },
-        { id: 2, text: "от 29 до 35", checked: false },
-        { id: 3, text: "От 36", checked: false },
-
-      ],
-    },
-    {
-      number: 2,
-      view: 1,
-      title: "Выберите лишнее:",
-      picture: "",
-      data: [
-        { id: 0, text: "Дом", checked: false },
-        { id: 1, text: "Шалаш", checked: false },
-        { id: 2, text: "Бунгало", checked: false },
-        { id: 3, text: "Скамейка", checked: false },
-        { id: 4, text: "Хижина", checked: false },
-      ],
-    },
-    {
-      number: 3,
-      view: 1,
-      title: "Продолжите числовой ряд: 18  20  24  32",
-      picture: "",
-      data: [
-        { id: 0, text: "62", checked: false },
-        { id: 1, text: "48", checked: false },
-        { id: 2, text: "74", checked: false },
-        { id: 3, text: "57", checked: false },
-        { id: 4, text: "60", checked: false },
-        { id: 5, text: "77", checked: false },
-      ],
-    },
-    {
-      number: 4,
-      view: 2,
-      title: "Выберите цвет, который сейчас наиболее Вам приятен:",
-      picture: "",
-      data: [
-        {
-          id: 0,
-          text: "#A8A8A8",
-          checked: false,
-        },
-        {
-          id: 1,
-          text: "#0000A9",
-          checked: false,
-        },
-        {
-          id: 2,
-          text: "#00A701",
-          checked: false,
-        },
-        {
-          id: 3,
-          text: "#F60100",
-          checked: false,
-        },
-        {
-          id: 4,
-          text: "#FDFF19",
-          checked: false,
-        },
-        {
-          id: 5,
-          text: "#A95403",
-          checked: false,
-        },
-        {
-          id: 6,
-          text: "#000000",
-          checked: false,
-        },
-        {
-          id: 7,
-          text: "#850068",
-          checked: false,
-        },
-        {
-          id: 8,
-          text: "#46B2AC",
-          checked: false,
-        },
-
-      ],
-    },
-    {
-      number: 5,
-      view: 2,
-      title: "Отдохните пару секунд, еще раз Выберите цвет, который сейчас наиболее Вам приятен:",
-      picture: "",
-      data: [
-        {
-          id: 0,
-          text: "#A8A8A8",
-          checked: false,
-        },
-        {
-          id: 1,
-          text: "#46B2AC",
-          checked: false,
-        },
-        {
-          id: 2,
-          text: "#A95403",
-          checked: false,
-        },
-        {
-          id: 3,
-          text: "#00A701",
-          checked: false,
-        },
-        {
-          id: 4,
-          text: "#000000",
-          checked: false,
-        },
-        {
-          id: 5,
-          text: "#F60100",
-          checked: false,
-        },
-        {
-          id: 6,
-          text: "#850068",
-          checked: false,
-        },
-        {
-          id: 7,
-          text: "#FDFF19",
-          checked: false,
-        },
-        {
-          id: 8,
-          text: "#0000A9",
-          checked: false,
-        },
-
-      ],
-    },
-    {
-      number: 6,
-      view: 1,
-      title: "Какой из городов лишний?",
-      picture: "",
-      data: [
-        {
-          id: 0,
-          text: "Вашингтон",
-          checked: false,
-        },
-        { id: 1, text: "Лондон", checked: false },
-        {
-          id: 2,
-          text: "Париж",
-          checked: false,
-        },
-        { id: 3, text: "Нью-Йорк", checked: false },
-        { id: 4, text: "Москва", checked: false },
-        { id: 5, text: "Оттава", checked: false },
-      ],
-    },
-    {
-      number: 7,
-      view: 3,
-      title: "Выберите правильную фигуру из четырёх пронумерованных.",
-      picture: "people.png",
-      data: [
-        {
-          id: 0,
-          text: "1",
-          checked: false,
-        },
-        {
-          id: 1,
-          text: "2",
-          checked: false,
-        },
-        {
-          id: 2,
-          text: "3",
-          checked: false,
-        },
-        {
-          id: 3,
-          text: "4",
-          checked: false,
-        },
-      ],
-    },
-    {
-      number: 8,
-      view: 1,
-      title: "Вам привычнее и важнее:",
-      picture: "",
-      data: [
-        {
-          id: 0,
-          text: "Наслаждаться каждой минутой проведенного времени",
-          checked: false,
-        },
-        { id: 1, text: "Быть устремленными мыслями в будущее", checked: false },
-        {
-          id: 2,
-          text: "Учитывать в ежедневной практике прошлый опыт",
-          checked: false,
-        },
-      ],
-    },
-    {
-      number: 9,
-      view: 1,
-      title: "Какое определение, по-Вашему, больше подходит к этому геометрическому изображению:",
-      picture: "test.png",
-      data: [
-        {
-          id: 0,
-          text: "оно остроконечное",
-          checked: false,
-        },
-        { id: 1, text: "оно устойчиво", checked: false },
-        {
-          id: 2,
-          text: "оно-находится в состоянии равновесия",
-          checked: false,
-        },
-      ],
-    },
-
-    {
-      number: 10,
-      view: 3,
-      title: "Вставьте подходящее число",
-      picture: "star.png",
-      data: [
-        { id: 0, text: "34", checked: false, },
-        { id: 1, text: "36", checked: false, },
-        { id: 2, text: "53", checked: false, },
-        { id: 3, text: "44", checked: false, },
-        { id: 4, text: "66", checked: false, },
-        { id: 5, text: "42", checked: false, },
-      ],
-    },
-
-    {
-      number: 11,
-      view: 4,
-      title: "Обработка результатов",
-      picture: "",
-      data: [
-
-      ],
-
-    },
-  ],
-};
-
-let result_data = {
-  finish: false,
-  loading: false,
-  error: false,
-  response: undefined,
-  errortext: undefined
-};
 
 //set false all property in array of obgect  and set true just one of them by id
 const ValueSelector = (array, id, property) => {
@@ -366,6 +71,7 @@ export default {
       refresh: 0,
 
 
+
     };
   },
   created() {
@@ -377,7 +83,7 @@ export default {
     modal_menu,
     test_screen,
     finish_screen,
-    test,
+
   },
   methods: {
     changeTestData(number, id) {
@@ -402,8 +108,9 @@ export default {
 
 
     },
-    changeMenuData(id) {
-
+    changeMenuData(id, scroll, lastpage) {
+      if (lastpage !== undefined)
+        this.pages.pagedata[lastpage].scroll = scroll;
       //prevent menu event on loading
       // if (this.test.current === (this.test.tests.length - 1)) return;
       //redirect on finish page from test page

@@ -26,7 +26,7 @@
           </div>
         </div>
         <div class="main__footer_group">
-          <a href="#detail" class="main__footer_block">
+          <a href="#detail" id="detail" class="main__footer_block">
             <div class="main__footer_block__circle_img">
               <img src="@/pics/arrow.png" alt="" />
             </div>
@@ -79,10 +79,26 @@ export default {
   /*min-width: 517px;*/
   /*max-width: 100%;*/
 
-  background: url("~@/pics/rain_bk.png") no-repeat;
+
+  background: center url("~@/pics/rain_bk.png") no-repeat;
   background-size: 100% 100%;
+  /*background-size: 100% 100%;
   /*background-size: 100vh;*/
 }
+
+@media (min-width:767px) {
+  .main {
+    background: url("~@/pics/logo.png") no-repeat center/0%, url("~@/pics/rain_bk2.png") no-repeat center;
+    background-size: calc(var(--app-height, 100vh) * 200 / 693) calc(var(--app-height, 100vh) * 200 / 693), 100% 100%;
+    background-position: right 50% top 27%, 0% 0%;
+
+
+
+    /*-size: 100% 100%, auto;*/
+  }
+
+}
+
 
 
 

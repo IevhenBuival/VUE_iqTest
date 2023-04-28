@@ -72,8 +72,8 @@ export default {
 .Loading__img_wrapper {
     /* Group */
     display: block;
-    width: 65px;
-    height: 68.32px;
+    min-width: 65px;
+    min-height: 68.32px;
     animation: rotating 2s linear infinite;
 
     /*background: #3bde7c;*/

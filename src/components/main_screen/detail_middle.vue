@@ -106,6 +106,12 @@ span {
   align-items: flex-end;
 }
 
+@media (min-width:767px) {
+  .datail_middle__text_block {
+    max-width: 50%;
+  }
+}
+
 
 
 .datail_middle__img_block {

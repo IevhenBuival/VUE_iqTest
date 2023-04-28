@@ -73,9 +73,9 @@ p {
 
 .detail_head__container {
   /*min-width: 517px;*/
-  margin-top: 83px;
-  margin-top: calc(var(--app-height, 100vh) * 83 / 568);
-  ;
+  margin-top: 55px;
+  margin-top: calc(var(--app-height, 100vh) * 55 / 568);
+
   width: 100%;
   overflow-y: hidden;
 
@@ -86,8 +86,21 @@ p {
   /*background-size: 100vh;*/
 }
 
+@media (min-height:1000px) {
+  .detail_head__container {
+    margin-top: 65px;
+    margin-top: calc(var(--app-height, 100vh) * 65 / 568);
+
+  }
+
+}
+
 .detail_head_wrapper {
   display: flex;
+
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
   margin: 0;
 
 }
