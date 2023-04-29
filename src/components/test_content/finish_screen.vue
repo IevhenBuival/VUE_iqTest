@@ -158,7 +158,7 @@ export default {
 }
 
 .isresponse {
-  overflow: auto;
+ 
   height: 100%;
 
 }
