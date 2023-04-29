@@ -1,5 +1,12 @@
 <template>
   <div class="finish" :class="{ isresponse: response }">
+    <div class="right lightning">
+      <img src="@/pics/lightning.png" alt="" />
+    </div>
+
+    <div class="left lightning">
+      <img src="@/pics/lightning.png" alt="" />
+    </div>
     <div>
 
       <header_menu v-bind:menu_list="menu_list" v-bind:showbrain="showbrain" v-on:setNewPage="setMenuData"
@@ -44,13 +51,7 @@
         IMPLINITI,
       </footer>
     </div>
-    <div class="right lightning">
-      <img src="@/pics/lightning.png" alt="" />
-    </div>
-
-    <div class="left lightning">
-      <img src="@/pics/lightning.png" alt="" />
-    </div>
+  
 
   </div>
 </template>
@@ -158,8 +159,8 @@ export default {
 }
 
 .isresponse {
- 
-  height: 100%;
+  overflow: auto;
+  height: 110%;
 
 }
 
