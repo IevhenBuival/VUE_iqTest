@@ -92,23 +92,27 @@ span {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  
   min-height: calc(var(--app-height, 100vh) * 471 / 568);
+ 
 
 }
 
 .datail_middle__text_block {
   display: flex;
   flex: 1 0 auto;
-  margin: 0 0;
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   flex-direction: column;
   align-items: flex-end;
+ 
+  
 }
 
 @media (min-width:767px) {
   .datail_middle__text_block {
-    max-width: 50%;
+    width: 70%;
+  margin: 0 auto;
   }
 }
 

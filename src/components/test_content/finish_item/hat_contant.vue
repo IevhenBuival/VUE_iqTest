@@ -59,8 +59,6 @@
     font-weight: 700;
     font-size: 15px;
     font-size: calc(var(--app-height, 100vh) * 15 / 568);
-    line-height: 16px;
-    line-height: calc(var(--app-height, 100vh) * 19 / 568);
     /* or 107% */
     text-align: center;
     letter-spacing: 0.1em;

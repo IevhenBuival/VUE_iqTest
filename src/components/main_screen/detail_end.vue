@@ -75,7 +75,6 @@ span {
   /*overflow: hidden;*/
 
   height: calc(var(--app-height, 100vh) * 533 / 568);
-  min-height: 533px;
   top: calc(var(--app-height, 100vh) * 1294 / 568);
   /*require('./assets/media/img.jpg')*/
   background: url("~@/pics/rain_bk2.png") no-repeat top center;
@@ -91,17 +90,19 @@ span {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  height: calc(var(--app-height, 100vh) * 533 / 568);
+
+
 
 
 }
 
 .datail_end__head {
   display: flex;
-  margin: 11% 13px 0 14%;
+  margin:  calc(var(--app-height, 100vh) * 53 / 568) 13px 0 14%;
   flex-grow: 1;
   flex-shrink: 0;
-  flex-basis: 17%;
+  flex-basis:  auto;
   overflow: hidden;
 
   min-width: 262px;
@@ -110,16 +111,17 @@ span {
   font-family: "Merriweather";
   font-style: normal;
   font-weight: 400;
-  font-size: calc(var(--app-height, 100vh) * 15 / 568);
-  line-height: calc(var(--app-height, 100vh) * 19 / 568);
+  font-size: calc(var(--app-height, 100vh) * 14 / 568);
   letter-spacing: 0.05em;
+  overflow:hidden;
   z-index: 5;
 
-  min-height: calc(var(--app-height, 100vh) * 87 / 568);
+  /*min-height: calc(var(--app-height, 100vh) * 87 / 568);*/
 
   align-items: center;
 
   color: #ffffff;
+
 
 }
 
@@ -144,8 +146,9 @@ span {
 
 .datail_end__main {
   display: flex;
-  flex: 1 0 43%;
+  flex: 1 0 calc(var(--app-height, 100vh) * 250 / 568);
   margin: 2.6% 3.75%;
+  padding-left: 2px;
   text-align: left;
   min-height: 30%;
   max-width: 90%;
@@ -158,16 +161,16 @@ span {
 }
 
 .datail_end__main p {
-  margin: auto 1.5% auto 4.5%;
+  margin: auto 0 auto 0;
   font-family: "Merriweather";
   font-style: normal;
   font-weight: 400;
   font-size: calc(var(--app-height, 100vh) * 16 / 568);
-  line-height: calc(var(--app-height, 100vh) * 20 / 568);
   /* or 144% */
   letter-spacing: 0.05em;
 
   color: #181818;
+
 
 }
 
@@ -187,16 +190,17 @@ span {
 }
 
 .detail_end__button {
-  flex: 1 0 10%;
+  flex: 1 0 auto;
   margin-top: 6%;
 }
 
 .detail_end__footer {
   display: flex;
-  flex: 1 1 auto;
+  flex: 1 0 auto;
   margin-bottom: calc(var(--app-height, 100vh) * 11 / 568);
   align-items: flex-end;
   justify-content: center;
+  
 
 
 }

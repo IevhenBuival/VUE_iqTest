@@ -7,10 +7,11 @@
           {{ $filters.firstSymbolToUpperCase(test_data.title) }}
         </h1>
         <div v-if="picture" class="test_card__img">
-
-          <img :src="'/img/' + image" v-bind:alt="image">
-
-
+ 
+         <img v-if="test_data.picture==='test.png'" src="@/pics/test.png" alt="">
+         <img v-if="test_data.picture==='star.png'" src="@/pics/star.png" alt="">
+         <img v-if="test_data.picture==='people.png'" src="@/pics/people.png" alt="">
+      
         </div>
 
       </div>
@@ -42,6 +43,8 @@ import button_item from "@/components/button_item/button_item";
 import test_recangle from "@/components/test_content/test_item/test_rectangle";
 import rectangle_item from "@/components/test_content/test_item/rectangle_item";
 
+
+
 export default {
   props: ["test_data", "tests_count"],
   components: {
@@ -66,11 +69,7 @@ export default {
       if (this.test_data.picture === "") return false;
       return true;
     },
-    image() {
-
-      return this.test_data.picture;//'loader.png'
-
-    },
+   
     fintest() {
       return this.test_data.number === (this.tests_count - 1) ? true : false;
     }

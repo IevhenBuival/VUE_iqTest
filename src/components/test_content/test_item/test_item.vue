@@ -63,7 +63,6 @@ export default {
   font-style: normal;
   font-weight: 400;
   font-size: calc(var(--app-height, 100vh) * 18 / 568);
-  line-height: calc(var(--app-height, 100vh) * 19 / 568);
   letter-spacing: 0.05em;
 
   color: #ffffff;

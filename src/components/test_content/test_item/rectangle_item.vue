@@ -38,7 +38,6 @@ export default {
     font-style: normal;
     font-weight: 400;
     font-size: calc(var(--app-height, 100vh) * 24 / 568);
-    line-height: calc(var(--app-height, 100vh) * 30 / 568);
     /* or 245% */
     text-align: center;
     text-transform: capitalize;

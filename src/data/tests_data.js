@@ -1,5 +1,5 @@
 let tests_data = {
-  current: 10,
+  current: 0,
   tests: [
     {
       number: 0,
