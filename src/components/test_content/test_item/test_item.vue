@@ -39,6 +39,7 @@ export default {
   width: 100%;
   /* Rectangle 4.4 */
   align-items: center;
+  overflow:hidden;
 
   min-height: calc(var(--app-height, 100vh) * 40 / 568);
   background: rgba(255, 255, 255, 0.15);
@@ -46,6 +47,8 @@ export default {
 
 .item_container {
   display: inline-block;
+  overflow:hidden;
+
   width: 100%;
 }
 

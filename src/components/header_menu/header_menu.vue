@@ -40,10 +40,11 @@ export default {
 
   methods: {
     menuSelect: function (id) {
+      
       this.$emit("setNewPage", id);
     },
     modalShow: function () {
-      this.$emit("setNewPage", 3);
+      this.$emit("setNewPage", 3,0,3);
     },
   },
 };

@@ -68,15 +68,14 @@ export default {
       test: tests_data,
       pages: page_manager,
       result: result_data,
-      refresh: 0,
-
+    
 
 
     };
   },
   created() {
     appHeightWidth();
-    this.refresh = this.refresh + 1;
+    
   },
   components: {
     main_screen,
@@ -100,6 +99,9 @@ export default {
         //  this.result.loading = true;
         //  setTimeout(() => {
         this.changeMenuData(4);
+        if (this.result.finish===false){
+        this.result.finishtime = Date.now()+10*60*1000;
+        }
         this.result.finish = true;
        
      
@@ -111,21 +113,35 @@ export default {
 
     },
     changeMenuData(id, scroll, lastpage) {
-      if (lastpage !== undefined)
+       if (lastpage !== undefined)
         this.pages.pagedata[lastpage].scroll = scroll;
-      //prevent menu event on loading
-      // if (this.test.current === (this.test.tests.length - 1)) return;
+     
+
       //redirect on finish page from test page
       if ((id === 2) && (this.result.finish)) id = 4;
-      ValueSelector(this.menu, id, "active");
+    
 
+
+      if ((id === 4) && (this.result.finish===false)&&(lastpage===4)) {
+          ///here you can start new test if that need 
+     
+      } else{
+
+
+   
+    ValueSelector(this.menu, id, "active");
+
+ 
       this.pages.showbrain = ((id === 2) || (id === 4)) ? true : false;
-      if (this.pages.pagedata[this.menu[id].page].active === false) {
+     
+     if (this.pages.pagedata[this.menu[id].page].active === false) {
         this.pages.lastpage = this.pages.pagedata.find(
           (el) => el.active === true
         ).id;
         ValueSelector(this.pages.pagedata, this.menu[id].page, "active");
       }
+      }
+
 
     },
     async getFinResult() {
@@ -184,7 +200,7 @@ html,
 body {
   height: 100%;
   background: grey;
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
 
 
 

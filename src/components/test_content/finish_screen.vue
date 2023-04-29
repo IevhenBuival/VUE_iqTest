@@ -33,9 +33,9 @@
           <div class="finish__action_text"><span>позвонить</span> и прослушать
             результат </div>
         </div>
-        <div v-if="result_data.response !== undefined">
-          <div header_title v-for="item of convertJson" :key="item.index">
-            {{ item }}
+        <div v-if="result_data.response !== undefined" class="fimnish__result">
+          <div  v-for="item of convertJson" :key="item.index" class="finish__result_item">
+            <p>{{ item }}</p>
           </div>
         </div>
       </div>
@@ -60,6 +60,15 @@ import header_menu from "@/components/header_menu/header_menu"
 import hat_contant from "@/components/test_content/finish_item/hat_contant"
 import loading_item from "@/components/test_content/finish_item/loading_item"
 
+const Timer = (finishtime) =>{
+ if (finishtime-Date.now()>0)
+     return `${Math.floor((finishtime-Date.now())/1000/60)}:${`${Math.floor((finishtime-Date.now())/1000)-60*Math.floor((finishtime-Date.now())/1000/60)}`.padStart(2,'0')}`;
+         else
+        return"00:00";
+}
+      
+
+
 export default {
   props: ["menu_list", "showbrain", "result_data"],
   components: {
@@ -71,15 +80,18 @@ export default {
   mounted() {
    
      this.setNewTime(600);
+     console.log();
 
    
    
   },
  
  data() {
-    return {time:0,finishtime: Date.now()+10*60*1000}
+    return {time: Timer(this.result_data.finishtime)}
  },
+
   computed: {
+
     response() {
       if (this.result_data.response !== undefined)
         return true
@@ -99,17 +111,19 @@ export default {
         if (col >=0)
         setTimeout(() => {
          col=col-1;
-         this.time=`${Math.floor((this.finishtime-Date.now())/1000/60)}:${Math.floor((this.finishtime-Date.now())/1000)-60*Math.floor((this.finishtime-Date.now())/1000/60)}`;
+         this.time=Timer(this.result_data.finishtime);
+         
          this.setNewTime(col)
           
 
       }, 1000);
     },
     setMenuData: function (id) {
-      this.$emit("setMenuData", id);
+    
+      this.$emit("setMenuData", id,undefined,4);
     },
     modalMenuShow: function () {
-      this.$emit("setMenuData", 3);
+      this.$emit("setMenuData", 3,undefined,undefined);
     },
     finishClick() {
       this.$emit("finishClick", 3);
@@ -153,7 +167,7 @@ export default {
   display: flex;
   margin-top: calc(var(--app-height, 100vh) * 46 / 568);
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
   min-height: 100%;
 
 }
@@ -306,6 +320,20 @@ export default {
 
 }
 
+.fimnish__result{
+  max-height:600px;
+  margin: 15px;
+  padding:10px;
+  overflow-y:auto;
+  background-color:grey;
+  border-radius: 20px;
+}
+.finish__result_item{
+  display:flex;
+ align-items:left;
+ text-align:left;
+ 
+  }
 
 .finish__footer {
   position: absolute;
@@ -329,6 +357,7 @@ export default {
   color: rgba(255, 255, 255, 0.5);
 
 }
+
 
 .response {
   position: relative;

@@ -74,7 +74,7 @@ p {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 
-  border-radius: calc(var(--app-height) * 20 / 568);
+
 }
 
 .opacity {

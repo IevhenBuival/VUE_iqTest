@@ -4,6 +4,7 @@ const initial_result_data = {
   error: false,
   response: undefined,
   errortext: undefined,
+  finishtime: undefined,
 };
 
 export default initial_result_data;
