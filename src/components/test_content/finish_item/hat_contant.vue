@@ -191,9 +191,7 @@
     font-weight: 500;
     font-size: 8px;
     font-size: calc(var(--app-height, 100vh) * 8 / 568);
-    line-height: 14px;
-    line-height: calc(var(--app-height, 100vh) * 14 / 568);
-    /* or 175% */
+     /* or 175% */
     text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;

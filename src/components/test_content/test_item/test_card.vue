@@ -170,8 +170,7 @@ export default {
   font-style: normal;
   font-weight: 400;
   font-size: calc(var(--app-height, 100vh) * 19 / 568);
-  line-height: calc(var(--app-height, 100vh) * 25 / 568);
-  text-align: center;
+   text-align: center;
   letter-spacing: 0.05em;
 
   color: #ffffff;

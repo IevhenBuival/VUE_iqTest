@@ -48,8 +48,7 @@ export default {
     font-style: normal;
     font-weight: 400;
     font-size: calc(var(--app-height, 100vh) * 23 / 568);
-    line-height: calc(var(--app-height, 100vh) * 30 / 568);
-    text-align: center;
+     text-align: center;
     letter-spacing: 0.05em;
 
     color: #ffffff;
@@ -100,7 +99,6 @@ export default {
     font-style: normal;
     font-weight: 400;
     font-size: calc(var(--app-height, 100vh) * 14 / 568);
-    line-height: calc(var(--app-height, 100vh) * 19 / 568);
     letter-spacing: 0.05em;
 
     text-align: left;

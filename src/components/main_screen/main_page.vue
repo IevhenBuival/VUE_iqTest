@@ -216,8 +216,7 @@ p {
 @media (min-width:767px) {
    .main__header_group h1 {
     font-size: calc(((var(--app-height, 100vh) * 30 / 693) + (15 *0.7) * ((100vw -640px) / 1280)));
-    line-height: calc(((var(--app-height, 100vh) * 35 / 693) + (15 *0.7) * ((100vw -640px) / 1280)));
-
+    
   }
 }
 
@@ -301,7 +300,6 @@ p {
   font-style: normal;
   font-weight: 400;
   font-size: calc(var(--app-height, 100vh) * 8 / 693);
-  line-height: calc(var(--app-height, 100vh) * 11 / 693);
   text-align: center;
   letter-spacing: 0.05em;
   color: #ffffff;

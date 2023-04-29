@@ -68,7 +68,7 @@ p {
   font-style: normal;
   font-weight: 700;
   font-size: calc(var(--app-height) * 14 / 568);
-  line-height: calc(var(--app-height) * 18 / 568);
+
   /* identical to box height */
   text-align: center;
   letter-spacing: 0.1em;

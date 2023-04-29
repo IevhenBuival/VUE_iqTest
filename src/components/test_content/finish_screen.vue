@@ -198,8 +198,7 @@ export default {
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
-  line-height: 23px;
-  line-height: calc(var(--app-height, 100vh) * 23 / 568);
+
   /* identical to box height, or 273% */
   text-align: center;
   letter-spacing: 0.1em;
@@ -309,8 +308,7 @@ export default {
   font-weight: 900;
   font-size: 15px;
   font-size: calc(var(--app-height, 100vh) * 15 / 568);
-  line-height: 18px;
-  line-height: calc(var(--app-height, 100vh) * 18 / 568);
+
   letter-spacing: 0.05em;
 
   color: #FFFFFF;
@@ -349,7 +347,7 @@ export default {
   font-style: normal;
   font-weight: 400;
   font-size: 7px;
-  line-height: 9px;
+
   /* or 129% */
   text-align: center;
   letter-spacing: 3px;

@@ -28,9 +28,7 @@ p {
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  line-height: 23px;
   font-size: calc(var(--app-height, 100vh) * 18 / 568);
-  line-height: calc(var(--app-height, 100vh) * 22 / 568);
   /* or 128% */
   text-align: center;
   letter-spacing: 0.05em;
@@ -41,7 +39,6 @@ p {
 @media (min-height: 900px) {
   p {
     font-size: calc(var(--app-height, 100vh) * 17 / 568);
-    line-height: calc(var(--app-height, 100vh) * 22 / 568);
   }
 }
 
