@@ -49,21 +49,22 @@ export default {
 
 .menu__wrapper {
   margin-top: calc(var(--app-height) * 100 / 568);
+ 
 }
 
 .menu__block_text {
   display: block;
 
 
-  width: 60%;
+  width: 100%;
   min-height: 19px;
   height: calc(var(--app-height) * 44 / 568);
-  margin: 27px 23px 0 0;
+  margin: 0 23px 0 0;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 300;
   font-size: calc(var(--app-height) * 16 / 568);
-  line-height: calc(var(--app-height) * 22 / 568);
+  
   text-transform: uppercase;
 
 

@@ -6,7 +6,7 @@
         <burger_item v-on:modalShow="modalShow" />
       </div>
       <div class="header__braintitle">
-        <brain_logo v-if="showbrain" v-bind:title="menuTitle" />
+        <brain_logo v-if="showbrain" v-bind:title="menuTitle" v-on:logoClick="logoClick"/>
       </div>
 
       <div class="header__menu">
@@ -45,6 +45,9 @@ export default {
     },
     modalShow: function () {
       this.$emit("setNewPage", 3,0,3);
+    },
+    logoClick: function(){
+    this.$emit("setNewPage", 0,0,2);
     },
   },
 };

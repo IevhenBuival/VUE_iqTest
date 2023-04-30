@@ -12,7 +12,7 @@ export default {
   props: { title: String },
   methods: {
     logoClick: function () {
-      this.$emit("modalShow");
+      this.$emit("logoClick");
     },
   },
 };

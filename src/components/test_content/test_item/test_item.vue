@@ -41,10 +41,21 @@ export default {
   align-items: center;
   overflow:hidden;
 
+  min-height: calc(var(--app-height, 100vh) * 45 / 568);
+  background: rgba(255, 255, 255, 0.15);
+}
+@media (min-width:320px){
+  .bugfix {
+  display: flex;
+  width: 100%;
+  /* Rectangle 4.4 */
+  align-items: center;
+  overflow:hidden;
+
   min-height: calc(var(--app-height, 100vh) * 40 / 568);
   background: rgba(255, 255, 255, 0.15);
 }
-
+}
 .item_container {
   display: inline-block;
   overflow:hidden;
@@ -62,12 +73,18 @@ export default {
   font-family: "PT Serif";
   font-style: normal;
   font-weight: 400;
-  font-size: calc(var(--app-height, 100vh) * 18 / 568);
+  font-size: calc(var(--app-height, 100vh) * 16 / 568);
   letter-spacing: 0.05em;
 
   color: #ffffff;
 }
-
+@media (min-width:320px){
+  .title {
+ 
+  font-size: calc(var(--app-height, 100vh) * 18 / 568);
+ 
+}
+}
 .circle {
   /* Ellipse */
 

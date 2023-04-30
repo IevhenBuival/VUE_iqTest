@@ -1,7 +1,7 @@
 <template>
   <div class="detail_end">
 
-    <div class="container">
+    <div class="detail_end_container">
       <div class="detail_end__content">
         <div class="datail_end__head">
           <p>
@@ -82,7 +82,17 @@ span {
   /*background-size: 100vh;*/
 }
 
+.detail_end_container{
+  max-width:100%;
+  margin:0 auto;
+}
+@media (min-width:767){
+.detail_end_container{
+   width: 70%;
+ 
+}
 
+}
 
 
 
@@ -90,6 +100,7 @@ span {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items:stretch;
   height: calc(var(--app-height, 100vh) * 533 / 568);
 
 
@@ -97,16 +108,18 @@ span {
 
 }
 
+
 .datail_end__head {
-  display: flex;
-  margin:  calc(var(--app-height, 100vh) * 53 / 568) 13px 0 14%;
+  display: block;
+  margin:  calc(var(--app-height, 100vh) * 53 / 568) 3.75% 0 3.75%;
+  
   flex-grow: 1;
   flex-shrink: 0;
   flex-basis:  auto;
+
   overflow: hidden;
 
   min-width: 262px;
-  max-width: 262px;
   text-align: left;
   font-family: "Merriweather";
   font-style: normal;
@@ -118,7 +131,7 @@ span {
 
   /*min-height: calc(var(--app-height, 100vh) * 87 / 568);*/
 
-  align-items: center;
+ 
 
   color: #ffffff;
 
@@ -173,6 +186,12 @@ span {
 
 
 }
+@media (min-width: 600px) {
+  .datail_end__main p {
+    line-height: 2em;
+
+  }
+}
 
 @media (min-width: 767px) {
   .datail_end__main p {
@@ -183,9 +202,9 @@ span {
 
 @media (min-width: 1024px) {
   .datail_end__main p {
-    font-size: calc(var(--app-height, 100vh) * 20 / 568);
-    line-height: calc(var(--app-height, 100vh) * 24 / 568);
-
+    font-size: calc(var(--app-height, 100vh) * 24 / 568);
+    line-height: 2em;
+   
   }
 }
 
