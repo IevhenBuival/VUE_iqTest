@@ -159,7 +159,7 @@ export default {
 }
 
 .isresponse {
-  overflow: auto;
+  overflow-y: auto;
   height: 110%;
 
 }
