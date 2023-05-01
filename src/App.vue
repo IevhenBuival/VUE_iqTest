@@ -96,8 +96,8 @@ export default {
       if (checked.length === 1) this.test.current = this.test.current + 1;
       if (this.test.current === (this.test.tests.length - 1)) {
 
-        //  this.result.loading = true;
-        //  setTimeout(() => {
+          this.result.loading = true;
+          setTimeout(() => {
         this.changeMenuData(4);
         if (this.result.finish===false){
         this.result.finishtime = Date.now()+10*60*1000;
@@ -105,8 +105,8 @@ export default {
         this.result.finish = true;
        
      
-        //}, 5000);
-        // this.result.loading = false;
+        }, 1000);
+         this.result.loading = false;
 
       }
 
